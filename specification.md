@@ -36,132 +36,163 @@ Prepared by {{IsiahJordan}}
 | Name | Date | Reason For Changes | Version |
 |------|------|--------------------|---------|
 |IsiahJordan      |11/12/2025      |Initial Requirements                    | 0.1.0 |
+|IsiahJordan      |11/17/2025      |Continue Requirements                    | 0.1.0 |
 
 ## 1. Introduction
-💬 _Provides an overview of the document and orients the reader to the system being specified._
-
-➥ Quicklet is an web application build using React, Express, and FastAPI stack that helps learners to create or take quizzes and share their creation with the community.
+➥ Quicklet is an web application build using Javascript and Python, that helps learners to create or take quizzes and share their creation with the community.
 
 ### 1.1 Document Purpose
-💬 _Clarifies why this SRS exists, what it contains, and who should use it._
-
 ➥ The document is designed for other developers to fork the project and mold it in their own vision or users who wishes to understand the details of what the project is supposed to provide.
+
 ➥ For anyone who wanted to maintain the project and continue to develop new features after the original goal was accomplished.
 
 ### 1.2 Product Scope
-💬 _Defines the software product’s purpose, boundaries, and relationship to business goals._
-
 ➥ Quicklet App V1.0.0
+
 ➥ Quicklet should provide users the ability to create quizzes and set the visibility either from public or private.
+
 ➥ Quicklet should be able to create bundles of quizzes to create a classroom.
+
 ➥ Quicklet should provide users the ability to take quizzes or join classrooms.
+
 ➥ Quicklet should provide the users KPI's of their result from a quiz or class.
 
 ### 1.3 Definitions, Acronyms, and Abbreviations
-
 | Term | Definition                                                                                                                   |
 |------|------------------------------------------------------------------------------------------------------------------------------|
-| API  | Application Programming Interface - A set of definitions and protocols for building and integrating application software     |
+| API (Architecture)  | A server that manages other additional sets of features to the backend     |
+| API (Concept)  | Application Programming Interface - A set of definitions and protocols for building and integrating application software     |
 | Framework Stack or Stack   | Development technologies used to develop the product                      |
+| Server | Is a project folder that contains the communication model between database and business logic |
 | SRS  | Software Requirements Specification - A document that describes the intended purpose, requirements, and nature of a software |
 | UI   | User Interface - The visual part of computer application through which a user interacts with a software                      |
 | User   | Any person or application interacting with the system UI or/and API                      |
 
 ### 1.4 References
-💬 _Lists external sources that are normative or informative for this SRS._
-
 ➥ **SRS-Template(jam01)**  [Link to Github Repo](https://github.com/jam01/SRS-Template.git)
 
 ### 1.5 Document Overview
-💬 _Brief guide to the structure of the SRS so readers can quickly find what they need._
-
 ➥ The following document would cover the Quicklets app background and context for the production. After that, the next section follows the requirements that are required to be integrated and tested during then after development. 
 To verify the success of each individual requirements, the proceeding section will comprise of different metrics of compliance. Lastly, the document will then cover additional appendixes for more visual context of the project specification.
+
 ➥ The practices that will be stricly followed when modifying contents of the specification are of the following: during initial screening, after finishing a single requirement fully, maintinance, or/and re-evaluation of the development cycle. 
 
 ## 2. Product Overview
-💬 _Provides background and context influencing the product’s requirements._
 
 ### 2.1 Product Perspective
-💬 _Places the product within a larger ecosystem or lineage._
-
 ➥ The product originated as a general use-case of the **acpa** project where the initial dependencies of classroom, quiz and metric based features are added with an additional community based interaction over career based result.
 This is an **upstream open source** system and for the ownership of the product, should always start with the accredited of the original owner and **SHOULD NOT RESTRICT EXTERNAL ADDITION** to the list.
 
-💡 Tips:
-- Highlight upstream/downstream systems and ownership boundaries.
-- A high-level context diagram may help to orient the reader.
-
 ### 2.2 Product Functions
-💬 _High-level summary of what the product enables users or systems to do._
+➥ Create and manage test
 
-➥ Provide a concise overview of the major functional areas/features. Defer detailed behaviors, data, and edge cases to Section 3.
+➥ Create and manage rooms
 
-💡 Tips:
-- 5–10 bullets are often sufficient at this level, grouping related functions logically.
-- Include a top-level data flow or use case diagram if helpful.
+➥ Generate statistical metrics
+
+➥ Send and received feedbacks
+
+➥ Dashboard for user and admin
 
 ### 2.3 Product Constraints
-💬 _Defines contextual limitations or conditions shaping design and implementation._
+➥ Must be deployed as a website and requires a host to maintain availability.
 
-➥ Describe constraints such as mandated interfaces, technology stacks, regulatory obligations, QoS baselines, hardware limitations, AI/ML model families, and organizational policies.
+➥ Must use the following technology stack that consist of **Postgresql**, **React**, **ExpressJS & FastAPI**, and **NodeJS** (PREN)
 
-💡 Tips:
-- State constraints as verifiable "must" statements (e.g., “must use FIPS 140–3 validated crypto modules”).
-- Distinguish external/internal and mandatory/preferred constraints.
-- Avoid design decisions unless truly binding.
-
-📝 Note:
-Requirements (Section 3) defines verifiable system obligations—specific behaviors or qualities the system shall exhibit in order to satisfy limits described in this section.
+➥ Must integrate **Docker** to deploy the project.
 
 ### 2.4 User Characteristics
-💬 _Defines the user groups and the attributes that affect requirements._
-
-➥ Identify user classes, roles, and personas, noting expertise, access levels, frequency of use, accessibility needs, and goals.
-
-💡 Tips:
-- Define user classes by behavior, not just titles.
-- Note localization and accessibility considerations that affect UI/UX requirements.
+➥ **student-** interacts with other users through comments and answer or make quizes/rooms.
+➥ **admin-** updates the database and monitor changes.
 
 ### 2.5 Assumptions and Dependencies
-💬 _External assumed factors or conditions, as opposed to known facts, that the project relies on._
+➥ Project architecture assumes the monolithic application. **Client**, **Server**, and **API** are the main modules for application. Client would consist of **ReactJS** while **Express JS & NodeJS** for server and **FastAPI** to API.
 
-➥ List assumptions about environment, hardware, usage patterns, third-party components/services, and organizational support. List dependencies on external systems, libraries, or teams. For each, indicate potential impact if proven false.
+➥ Project assumes dependencies on **Tailwindcss**, **ThreeJS**, and **GSAP** for frontend libraries. While additional dependencies relies of **vitest** to unit test application and **storyboard** to design components.
 
-💡 Tips:
-- Link assumptions to risk register with owner and mitigation when available.
-
-### 2.6 Apportioning of Requirements
-💬 _Allocation of requirements across components or increments._
-
-➥ Map major requirements to subsystems, services, or releases/iterations. Use a cross-reference table to show allocation and to clearly identify deferred requirements.
-
-💡 Tips:
-- Note unknown allocations explicitly and track as follow-ups.
+➥ Project assumes dependencies on **Tailwindcss**, **ThreeJS**, and **GSAP** for frontend libraries. While additional dependencies relies of **vitest** to unit test application and **storyboard** to design components.
 
 ## 3. Requirements
-💬 _This section specifies **verifiable** requirements of the software product to enable design and testing._
-
-➥ State requirements to a level of detail sufficient for design and verification. Use unique identifiers, consistent keywords (shall/should/may), and clear conditions. Describe inputs, processing in response, and outputs where applicable. Reference the relevant 2.3 Product Constraints that the requirement addresses.
-
-📃 Template (applies to **all** requirements):
 ```markdown
 - ID: REQ-FUNC-001
-- Title: Short title, representative of the requirement...
-- Statement: The system shall...
-- Rationale: ...
-- Acceptance Criteria: ...
-- Verification Method: Test | Analysis | Inspection | Demonstration | Other
-- More Information: Additional context. Links to related artifacts.
+- Title: Sign Up
+- Statement: The system shall create a user and encrypt password
+- Rationale: To have an account accessing the application contents
+- Acceptance Criteria: Reflection to the database and properly secured password
+- Verification Method: Test
 ```
 
-Requirement ID schema and traceability:
-- ID format: REQ-[AREA]-[NNN]-[VER] (optional -[VER] if versioned), where AREA ∈ {FUNC, INT, PERF, SEC, REL, AVAIL, OBS, COMP, INST, BUILD, DIST, MAINT, REUSE, PORT, COST, DEAD, POC, CM, ML}.
-- Uniqueness: IDs must be unique and immutable; changes increment -[VER] and are recorded in Revision History.
-- Traceability: Each test artifact may reference the requirement ID.
+```markdown
+- ID: REQ-FUNC-002
+- Title: Sign In
+- Statement: The system shall login to existing account and received authorization token
+- Rationale: To proceed into the application with correct authority.
+- Acceptance Criteria: Proper access to authorized routes and denial of non authorized, correct data verification to account in database.
+- Verification Method: Test
+```
 
-💡 Tips:
-- Make each requirement testable and unambiguous, using standard metrics and avoiding vague terms (e.g., “user-friendly,” “fast”).
+```markdown
+- ID: REQ-FUNC-003
+- Title: Toast UI
+- Statement: The system shall have success, warning, and error messages as prompt.
+- Rationale: To make websites easier to debug and to notify users more generally to any interactions.
+- Acceptance Criteria: Responsive on desktop and mobile, shall prompt swiftly around 100ms strictly after the call and 3 seconds displaying.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-004
+- Title: Input Box UI
+- Statement: The system shall implement a general input box design for: password, textbox, search, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-005
+- Title: Button UI
+- Statement: The system shall implement a general button design for: dropdown, checkbox, radio button, and standard
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of button is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-006
+- Title: Form Layout UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-007
+- Title: Proteted Route
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-008
+- Title: Routes Service
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-009
+- Title: Proteted Route
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
 ### 3.1 External Interfaces
 💬 _Specifies all external inputs and outputs, covering both required and provided interfaces._
@@ -206,66 +237,6 @@ Requirement ID schema and traceability:
 - Include edge cases and negative scenarios for completeness.
 - For AI features, include fallback behaviors and thresholds for abstention.
 
-### 3.3 Quality of Service
-💬 _Quality attributes that constrain or qualify functional behavior._
-
-➥ Use specific metrics, ranges, and conditions.
-
-💡 Tips:
-- When a quality applies only to a subset of functions, reference the related requirement IDs.
-- Provide rationale when targets cut across functions to aid trade-off decisions.
-
-#### 3.3.1 Performance
-💬 _Response time, throughput, and resource usage expectations._
-
-➥ Specify timing relationships, peak/steady-state loads, and performance targets under expected conditions. Include measurement methods, environments, and acceptance thresholds. Note any real-time constraints.
-
-💡 Tips:
-- Include scalability targets and capacity planning assumptions.
-- Consider organizing into subcategories for clarity: Time (latency, throughput, etc.) and Space (memory, storage, bandwidth, etc.).
-
-#### 3.3.2 Security
-💬 _Defines the protection of data, identities, and operations._
-
-➥ Define authentication, authorization, data protection (in transit/at rest), auditing, and privacy requirements. Address abuse/misuse and external attacks (e.g., injection, data exfiltration, or service compromise), and include secure defaults and incident response requirements.
-
-💡 Tips:
-- Distinguish mandatory controls vs. recommended practices.
-- Consider organizing into subcategories for clarity: Safety (harmful external outcomes), Confidentiality (disclose data to unauthorized parties), Privacy (private data disclosed without consent), Integrity (data modified without authorization), and Availability (authorized data or resources made available when requested).
-
-📝 Note:
-Place generic security controls here (3.3.2), and cross-reference from supported controls as necessary:
-- Use 3.1 External Interfaces for interface-level validation and secure protocols.
-- Use 3.4 Compliance for regulatory/contractual obligations and audit evidence.
-- Use 3.6 AI/ML for model-specific runtime protections and data governance.
-
-#### 3.3.3 Reliability
-💬 _Ability to consistently perform as specified._
-
-➥ Specify reliability metrics and techniques (e.g., MTBF, error budgets, retry/backoff, idempotency, redundancy). Define conditions under which reliability is assessed and any failover behaviors. Define graceful degradation (e.g., fallback components, cached results, AI/ML deterministic heuristics), timeout/abstain policies, and rollback to previous versions.
-
-#### 3.3.4 Availability
-💬 _System uptime and readiness to deliver service._
-
-➥ Define availability targets, maintenance windows, and mechanisms like checkpointing, recovery, and restart. Include geographical/zone redundancy if applicable.
-
-💡 Tips:
-- Express availability in terms meaningful to users (e.g., downtime per month) and tie to SLAs/SLOs.
-- Capture scale-out/in behavior affecting availability (e.g., max failover time, quorum constraints).
-
-#### 3.3.5 Observability
-💬 _Ability to understand system state and behavior in production through telemetry._
-
-➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership.
-
-💡 Tips:
-- Avoid maintenance-process details (keep runbooks and on-call policies in 3.5.4 Maintainability).
-
-### 3.4 Compliance
-💬 _Requirements derived to satisfy external standards, regulations, or contracts._
-
-➥ Specify mandated formats, naming conventions, accounting procedures, provider/user rights and agreements, licensing agreements, audit tracing, records retention, and reporting. For each compliance item, reference 2.3 Product Constraints if applicable, or cite the authoritative source directly.
-
 ### 3.5 Design and Implementation
 💬 _Constraints or mandates affecting how the solution is designed, deployed, and maintained._
 
@@ -287,16 +258,6 @@ Place generic security controls here (3.3.2), and cross-reference from supported
 - Cross-reference 3.5.1 Installation and 3.5.10 Change Management for environment setup, versioning, and release traceability.
 - Avoid operational topology details (those belong in 3.5.3 Distribution).
 
-#### 3.5.3 Distribution
-💬 _Addresses geographically or organizationally distributed deployments, data, and devices._
-
-➥ Specify deployment topologies, component and data distribution/replication approaches and scale-out runbooks, and constraints imposed by organizational or network structure.
-
-#### 3.5.4 Maintainability
-💬 _Attributes that make the software easier to modify, fix, and evolve._
-
-➥ Define expectations for modularity, code complexity, interfaces, coding standards, developer oriented observability, documentation, software delivery performance, and technical debt management.
-
 #### 3.5.5 Reusability
 💬 _Encourages leveraging components across products or contexts when appropriate._
 
@@ -306,16 +267,6 @@ Place generic security controls here (3.3.2), and cross-reference from supported
 💬 _Ability to run on multiple platforms or environments with minimal changes._
 
 ➥ Specify (un)supported operating systems, hardware architectures, cloud providers, or container runtimes. Define abstraction layers, configuration policies, and externalization of environment-specific settings.
-
-#### 3.5.7 Cost
-💬 _Financial considerations or cost targets._
-
-➥ State budgetary limits, cost-per-transaction targets, licensing constraints, or cloud spend envelopes that influence design decisions.
-
-💡 Tips:
-- Keep costs high-level unless contractually defined.
-- Link to a cost model or TCO assumptions where available.
-- Note variable vs. fixed cost expectations impacting scaling strategies.
 
 #### 3.5.8 Deadline
 💬 _Schedule expectations that affect scope and prioritization._
@@ -333,79 +284,3 @@ Place generic security controls here (3.3.2), and cross-reference from supported
 💡 Tips:
 - Keep POCs narrowly focused and measurable. Focus on validation goals, not implementation details.
 
-#### 3.5.10 Change Management
-💬 _Controls how changes are introduced and communicated._
-
-➥ Define change categories (breaking, additive, bugfix), approval workflow, and required artifacts (changelogs, evaluation summaries, migration guides, release notes). Specify backward/forward compatibility guarantees, client communication plans, deprecation timelines, and rollout/rollback procedures.
-
-### 3.6 AI/ML
-💬 _This section defines requirements unique to systems incorporating machine learning or data-driven components at their core. These requirements complement functional, quality, and design aspects in preceding sections but address ML-specific lifecycle, data, and ethical considerations._
-
-#### 3.6.1 Model Specification
-💬 _Defines what each model is intended to do and the measurable criteria for acceptable performance._
-
-➥ Describe model(s) purpose, scope, expected behavior, key inputs and outputs, and measurable performance objectives. Note any validation datasets, benchmarks, or versioning practices used to ensure reproducibility.
-
-💡 Tips:
-- Distinguish baseline targets from aspirational improvements and define acceptable tolerance for drift.
-
-#### 3.6.2 Data Management
-💬 _Ensures integrity, traceability, and ethical lifecycle of data used in model training, validation, and operation._
-
-➥ Specify dataset origin, ownership, consent conditions; labeling processes and quality controls; data lineage, versioning, and reproducibility (training → validation → inference); storage, access controls, and anonymization/pseudonymization standards; handling of missing, synthetic, or augmented data.
-
-#### 3.6.3 Guardrails
-💬 _Ensure that the AI system operates safely, predictably, and within approved boundaries._
-
-➥ Specify how the system validates inputs, filters or constrains outputs, and limits available actions to prevent harm, misuse, or unintended consequences. Include mechanisms to detect and respond to malicious inputs or unsafe operational conditions.
-
-💡 Tips:
-- Treat “guardrails” across input, output, and action layers.
-- Define escalation, logging, and rollback procedures when safety constraints are triggered.
-- Cross-reference 3.3.2 Security for system-level protections and 3.6.4 Ethics for normative expectations.
-
-#### 3.6.4 Ethics
-💬 _Addresses fairness, transparency, and accountability in model behavior and outcomes._
-
-➥ Define how ethical considerations will be identified, measured, and managed throughout development and operation. Include fairness objectives, explainability expectations, and documentation or review requirements.
-
-💡 Tips:
-- Use fairness metrics appropriate to context (e.g., demographic parity, equal opportunity).
-- Consider organizing into subcategories for clarity: Fairness (societal bias in outcomes), Interpretability (can inspect the model and understand outputs), and Explainability (can explain an output for a given input).
-- Coordinate with 3.6.3 Guardrails for enforcement mechanisms and 3.6.5 Human-in-the-Loop for human oversight.
-
-#### 3.6.5 Human-in-the-Loop
-💬 _Specifies the role of human oversight in decisions influenced or made by machine learning models._
-
-➥ Describe where and how human review, approval, or intervention is required. Clarify review latency or throughput expectations, escalation paths, feedback mechanisms, traceability, and auditability of human actions.
-
-💡 Tips:
-- Link to applicable roles defined in 2.4 User Characteristics.
-
-#### 3.6.6 Model Lifecycle and Operations
-💬 _Defines requirements for deploying, monitoring, retraining, and retiring models in production._
-
-➥ Outline how models transition from development to production, how their performance and data quality are monitored, and how retraining or rollback is triggered and managed. Include expectations for versioning and archival.
-
-## 4. Verification
-💬 _Describes how each requirement will be verified to provide objective evidence of compliance._
-
-➥ Outline verification methods (test, canary metrics, analysis, inspection, demonstration) and test evidence preferably in a matrix paralleling Section 3. Consider adding environment details, tools, and test data requirements.
-
-| Requirement ID | Verification Method | Test/Artifact Link | Status | Evidence           |
-|----------------|---------------------|--------------------|--------|--------------------|
-| REQ-FUNC-001   | test                | tests/UC01.md      | Passed | reports/tuc01.html |
-| REQ-SEC-003    | analysis            | threat-model.md    | WIP    |                    |
-
-💡 Tips:
-- Include both positive and negative tests and include non-functional verification (performance, security, reliability).
-- Verification artifacts may be versioned and linked to CI/CD.
-- For AI, reference Model Cards and track eval datasets’ versions and ensure reproducibility of results.
-
-## 5. Appendixes
-💬 _Optional supporting material that aids understanding without being normative._
-
-➥ Include glossaries, data dictionaries, models/diagrams, sample datasets, or change-impact analyses that support the main sections. Reference rather than duplicate content when possible.
-
-💡 Tips:
-- Keep appendixes organized and referenced from the main text.
