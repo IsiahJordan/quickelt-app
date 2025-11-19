@@ -1,6 +1,6 @@
 FROM node:22.18.0
 
-WORKDIR /api 
+WORKDIR /server
 COPY package-lock.json package-lock.json
 COPY package.json package.json
 
