@@ -1,5 +1,5 @@
 # Software Requirements Specification
-## For {{Quicklet App}}
+## For {{Quickelt App}}
 
 Version 0.1  
 Prepared by {{IsiahJordan}}   
