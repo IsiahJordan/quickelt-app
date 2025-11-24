@@ -99,7 +99,7 @@ This is an **upstream open source** system and for the ownership of the product,
 ### 2.3 Product Constraints
 ➥ Must be deployed as a website and requires a host to maintain availability.
 
-➥ Must use the following technology stack that consist of **Postgresql**, **React**, **ExpressJS & FastAPI**, and **NodeJS** (PREN)
+➥ Must use the following technology stack that consist of **Postgresql & MongoDB**, **React**, **ExpressJS & FastAPI**, and **NodeJS** (PREN)
 
 ➥ Must integrate **Docker** to deploy the project.
 
@@ -480,6 +480,60 @@ This is an **upstream open source** system and for the ownership of the product,
 ```markdown
 - ID: REQ-FUNC-037
 - Title: Create Quiz Feature
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-038
+- Title: Loading UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-039
+- Title: Panel UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-040
+- Title: Assessment Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-041
+- Title: Assessment Service
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-042
+- Title: Modal UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-043
+- Title: Processing Service
 - Statement: The system shall implement a general input box design for: password, textbox, code, and email.
 - Rationale: To reuse components with flexibility in variety.
 - Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
