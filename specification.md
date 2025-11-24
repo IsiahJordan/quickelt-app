@@ -118,7 +118,8 @@ This is an **upstream open source** system and for the ownership of the product,
 
 ### 3.1 External Interfaces
 
-![ERD Diagram](Quicklet ERD.drawio.svg)
+![ERD Diagram](https://github.com/IsiahJordan/quickelt-app/blob/docs/create-requirements/Quickelt%20ERD.drawio.svg)
+
 💡 Tips:
 - Use interface control documents or schemas where appropriate and reference them here.
 
