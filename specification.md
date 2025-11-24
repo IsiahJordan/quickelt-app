@@ -37,6 +37,8 @@ Prepared by {{IsiahJordan}}
 |------|------|--------------------|---------|
 |IsiahJordan      |11/12/2025      |Initial Requirements                    | 0.1.0 |
 |IsiahJordan      |11/17/2025      |Continue Requirements                    | 0.1.0 |
+|IsiahJordan      |11/17/2025      |Define Initial Requirements                    | 0.1.0 |
+
 
 ## 1. Introduction
 ➥ Quicklet is an web application build using Javascript and Python, that helps learners to create or take quizzes and share their creation with the community.
@@ -113,9 +115,47 @@ This is an **upstream open source** system and for the ownership of the product,
 ➥ Project assumes dependencies on **Tailwindcss**, **ThreeJS**, and **GSAP** for frontend libraries. While additional dependencies relies of **vitest** to unit test application and **storyboard** to design components.
 
 ## 3. Requirements
+
+### 3.1 External Interfaces
+💬 _Specifies all external inputs and outputs, covering both required and provided interfaces._
+
+➥ Provide interface definitions sufficient for implementation and test.
+
+💡 Tips:
+- Use interface control documents or schemas where appropriate and reference them here.
+
+#### 3.1.1 User Interfaces
+💬 _Describes how users interact with the system at a logical level._
+
+➥ Define UI elements, flows, and standards to be followed (style guides, accessibility guidelines). Include layout constraints, common controls (e.g., help, search), keyboard shortcuts, error/empty-state behavior, and localization. Keep visual designs in a separate UI specification and reference them.
+
+💡 Tips:
+- Reference accessibility standards (e.g., WCAG) and platform-specific guidelines.
+- Consider organizing into subcategories for clarity: Usability/Accessibility (inputs/outputs and dialogs to fit user abstractions, abilities, and expectations), and Convenience.
+
+#### 3.1.2 Hardware Interfaces
+💬 _Details interactions with physical devices and platforms._
+
+➥ Specify (un)supported device types, data/control signals, electrical or mechanical characteristics if relevant, and communication protocols. Include timing, throughput, and reliability expectations.
+
+💡 Tips:
+- Reference applicable hardware specs and certification requirements.
+
+#### 3.1.3 Software Interfaces
+💬 _Defines integrations with other software components and services._
+
+➥ List connected systems (name and version), required or provided services/APIs, data items/messages exchanged, communication styles/protocols, and limit/error/timeout semantics. Identify shared data and ownership.
+
+💡 Tips:
+- Capture versioning and backward compatibility policies.
+- Define authentication/authorization expectations for each integration.
+
+### 3.2 Functional
+💬 _Specifies the externally observable behaviors and functions the software shall provide._
+
 ```markdown
 - ID: REQ-FUNC-001
-- Title: Sign Up
+- Title: Sign Up Page
 - Statement: The system shall create a user and encrypt password
 - Rationale: To have an account accessing the application contents
 - Acceptance Criteria: Reflection to the database and properly secured password
@@ -124,7 +164,7 @@ This is an **upstream open source** system and for the ownership of the product,
 
 ```markdown
 - ID: REQ-FUNC-002
-- Title: Sign In
+- Title: Sign In Page
 - Statement: The system shall login to existing account and received authorization token
 - Rationale: To proceed into the application with correct authority.
 - Acceptance Criteria: Proper access to authorized routes and denial of non authorized, correct data verification to account in database.
@@ -169,7 +209,7 @@ This is an **upstream open source** system and for the ownership of the product,
 
 ```markdown
 - ID: REQ-FUNC-007
-- Title: Proteted Route
+- Title: Navigation Bar UI
 - Statement: The system shall implement a general input box design for: password, textbox, code, and email.
 - Rationale: To reuse components with flexibility in variety.
 - Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
@@ -187,49 +227,264 @@ This is an **upstream open source** system and for the ownership of the product,
 
 ```markdown
 - ID: REQ-FUNC-009
-- Title: Proteted Route
+- Title: Proteted Route Service
 - Statement: The system shall implement a general input box design for: password, textbox, code, and email.
 - Rationale: To reuse components with flexibility in variety.
 - Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
 - Verification Method: Test & Analyze
 ```
 
-### 3.1 External Interfaces
-💬 _Specifies all external inputs and outputs, covering both required and provided interfaces._
+```markdown
+- ID: REQ-FUNC-010
+- Title: Forget Password Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-➥ Provide interface definitions sufficient for implementation and test.
+```markdown
+- ID: REQ-FUNC-011
+- Title: Carousel UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-💡 Tips:
-- Use interface control documents or schemas where appropriate and reference them here.
+```markdown
+- ID: REQ-FUNC-012
+- Title: Timer UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-#### 3.1.1 User Interfaces
-💬 _Describes how users interact with the system at a logical level._
+```markdown
+- ID: REQ-FUNC-013
+- Title: Progress Bar UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-➥ Define UI elements, flows, and standards to be followed (style guides, accessibility guidelines). Include layout constraints, common controls (e.g., help, search), keyboard shortcuts, error/empty-state behavior, and localization. Keep visual designs in a separate UI specification and reference them.
+```markdown
+- ID: REQ-FUNC-014
+- Title: Slider UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-💡 Tips:
-- Reference accessibility standards (e.g., WCAG) and platform-specific guidelines.
-- Consider organizing into subcategories for clarity: Usability/Accessibility (inputs/outputs and dialogs to fit user abstractions, abilities, and expectations), and Convenience.
+```markdown
+- ID: REQ-FUNC-015
+- Title: User Statistic Service
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-#### 3.1.2 Hardware Interfaces
-💬 _Details interactions with physical devices and platforms._
+```markdown
+- ID: REQ-FUNC-016
+- Title: Card UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-➥ Specify (un)supported device types, data/control signals, electrical or mechanical characteristics if relevant, and communication protocols. Include timing, throughput, and reliability expectations.
+```markdown
+- ID: REQ-FUNC-017
+- Title: Table UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-💡 Tips:
-- Reference applicable hardware specs and certification requirements.
+```markdown
+- ID: REQ-FUNC-018
+- Title: Profile Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-#### 3.1.3 Software Interfaces
-💬 _Defines integrations with other software components and services._
+```markdown
+- ID: REQ-FUNC-019
+- Title: Search Feature
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-➥ List connected systems (name and version), required or provided services/APIs, data items/messages exchanged, communication styles/protocols, and limit/error/timeout semantics. Identify shared data and ownership.
+```markdown
+- ID: REQ-FUNC-020
+- Title: Feedback Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-💡 Tips:
-- Capture versioning and backward compatibility policies.
-- Define authentication/authorization expectations for each integration.
+```markdown
+- ID: REQ-FUNC-021
+- Title: Feedback Message UI
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
-### 3.2 Functional
-💬 _Specifies the externally observable behaviors and functions the software shall provide._
+```markdown
+- ID: REQ-FUNC-022
+- Title: Feedback Message Service
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-023
+- Title: Expand Image Feature
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-024
+- Title: Favourite Feature
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-025
+- Title: Filter Feature
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-026
+- Title: Auth Home Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-027
+- Title: Quiz Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-028
+- Title: Room Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-029
+- Title: List Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-030
+- Title: Quiz Details Service
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-031
+- Title: Room Details Service
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-032
+- Title: Image Upload Service
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-033
+- Title: Blog Service
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-034
+- Title: Create Room Feature
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-035
+- Title: Create Room Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-036
+- Title: Create Quiz Page
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
+
+```markdown
+- ID: REQ-FUNC-037
+- Title: Create Quiz Feature
+- Statement: The system shall implement a general input box design for: password, textbox, code, and email.
+- Rationale: To reuse components with flexibility in variety.
+- Acceptance Criteria: Responsive on desktop and mobile, must stricly maintain properties dependent on what type of input box is being used.
+- Verification Method: Test & Analyze
+```
 
 ➥ Organize functional requirements by feature, use case, or service. For each, describe triggers/inputs, processing/logic (at a black-box level), outputs, and error conditions. For AI behaviors, define determinism bounds (e.g., temperature), refusal criteria, safety rules, and human review points.
 
@@ -267,14 +522,6 @@ This is an **upstream open source** system and for the ownership of the product,
 💬 _Ability to run on multiple platforms or environments with minimal changes._
 
 ➥ Specify (un)supported operating systems, hardware architectures, cloud providers, or container runtimes. Define abstraction layers, configuration policies, and externalization of environment-specific settings.
-
-#### 3.5.8 Deadline
-💬 _Schedule expectations that affect scope and prioritization._
-
-➥ Specify key milestones, delivery dates, or phases/increments. Indicate dependencies between milestones and required readiness criteria.
-
-💡 Tips:
-- Use deadlines to guide apportioning of requirements (Section 2.6).
 
 #### 3.5.9 Proof of Concept
 💬 _Validates feasibility and de-risks critical assumptions before full-scale delivery._
