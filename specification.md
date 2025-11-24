@@ -117,10 +117,8 @@ This is an **upstream open source** system and for the ownership of the product,
 ## 3. Requirements
 
 ### 3.1 External Interfaces
-💬 _Specifies all external inputs and outputs, covering both required and provided interfaces._
 
-➥ Provide interface definitions sufficient for implementation and test.
-
+![ERD Diagram](Quicklet ERD.drawio.svg)
 💡 Tips:
 - Use interface control documents or schemas where appropriate and reference them here.
 
