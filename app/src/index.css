@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Lato:wght@400;700&display=swap');
+
+
+@theme {
+  --font-default: "Barlow", "Lato", sans-serif;
+
+  --color-background: #000000;
+  --color-background-alt: #FFFFFF;
+  --color-default: #FFFFFF;
+  --color-alt: #000000;
+
+  --color-primary-500: #4B3BC4; 
+  --color-primary-700: #15171B;
+  --color-primary-300: #3D4454;
+  --color-secondary-500: #FF9D00;
+  --color-accent-500: #5A6396;
+}
+
+@layer base {
+  body {
+    @apply m-0 p-0 font-default;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply 
+      rounded-sm 
+      leading-none
+      text-[15px] font-medium
+      max-sm:py-3 sm:py-4 
+      cursor-pointer 
+      sm:min-w-15
+  }
+}
