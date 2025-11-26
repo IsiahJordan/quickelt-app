@@ -10,7 +10,9 @@ const meta: Meta<StoryProps> = {
   tags: ['autodocs'], 
 } satisfies Meta<typeof Button>; 
 
-export default meta; type Story = StoryObj<StoryProps>; 
+export default meta; 
+
+type Story = StoryObj<StoryProps>; 
 
 export const Primary: Story = {}; 
 export const Secondary: Story = { 
