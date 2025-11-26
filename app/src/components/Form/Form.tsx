@@ -12,7 +12,8 @@ export default function Form({
   variant="large",
   labels, 
   types, 
-  children,
+  topChild,
+  bottomChild,
   leftIcons,
   rightIcons,
   setter, 
@@ -23,7 +24,7 @@ export default function Form({
 
   return (
     <div className={classes}>
-      {children}
+      {topChild}
       {labels.map((item, index) => (
         <div className="my-2 w-full px-8">
           <label className="label">{item}</label>
@@ -37,6 +38,7 @@ export default function Form({
           />
         </div>
       ))}
+      {bottomChild}
     </div>
   );
 }

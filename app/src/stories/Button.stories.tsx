@@ -8,6 +8,9 @@ const meta: Meta<StoryProps> = {
   component: Button, 
   title: 'Button', 
   tags: ['autodocs'], 
+  args: {
+    label: 'Testing'
+  }
 } satisfies Meta<typeof Button>; 
 
 export default meta; 
