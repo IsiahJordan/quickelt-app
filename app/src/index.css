@@ -51,7 +51,7 @@
   .box {
     @apply 
       text-[18px] font-medium 
-      flex-1 sm:ml-3 max-sm:ml-2 sm:max-w-[90%];
+      flex-1 sm:ml-3 max-sm:ml-2 sm:max-w-[60%];
   }
 
   input:focus {
@@ -60,7 +60,7 @@
 
   .label {
     @apply
-      block mb-2.5 text-sm font-medium;  
+      block mb-2.5 text-sm font-light sm:text-[18px];  
   }
 
   .icon-input {
