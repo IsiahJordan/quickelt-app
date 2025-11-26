@@ -1,10 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Lato:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Lato:wght@400;700&display=swap');
 
 
 @theme {
@@ -20,6 +19,7 @@
   --color-primary-300: #3D4454;
   --color-secondary-500: #FF9D00;
   --color-accent-500: #5A6396;
+  --color-accent-300: #F5F4F4;
 }
 
 @layer base {
@@ -36,6 +36,35 @@
       text-[15px] font-medium
       max-sm:py-3 sm:py-4 
       cursor-pointer 
-      sm:min-w-15
+      sm:min-w-15;
   }
+
+  .input {
+    @apply 
+      rounded-sm
+      max-sm:px-3 sm:px-6
+      max-sm:py-5 sm:py-4
+      border border-alt
+      flex;
+  }
+
+  .box {
+    @apply 
+      text-[18px] font-medium 
+      flex-1 sm:ml-3 max-sm:ml-2;
+  }
+
+  input:focus {
+    @apply outline-none ring-0;
+  }
+
+  .label {
+    @apply
+      block mb-2.5 text-sm font-medium;  
+  }
+
+  .icon-input {
+    @apply
+      flex justify-center items-center;
+  } 
 }
