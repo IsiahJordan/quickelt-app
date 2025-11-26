@@ -27,7 +27,7 @@ export default function InputBox({
       }
       <input className={boxClasses} type={type} placeholder={placeholder}/>
       { rightChild &&
-        <div className="icon-input flex-[0.2]">{rightChild}</div>
+        <div className="icon-input flex-[0.5] pr-4">{rightChild}</div>
       }
     </div>
   );

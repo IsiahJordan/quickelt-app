@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite' 
 import { ComponentProps } from 'react' 
 import InputBox from '@/components/InputBox' 
-import { IoMdMail } from "react-icons/io";
-import { FaRegEyeSlash } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
+import Icon from '@/components/Icon'
 import { fn } from 'storybook/test'
 
 type StoryProps = ComponentProps<typeof InputBox>; 
@@ -25,7 +23,7 @@ export const Dark: Story = {
   args: {
     type: "email",
     placeholder: "Enter Email",
-    leftChild: <IoMdMail size={28} color="#ffffff" opacity="90%"/>,
+    leftChild: <Icon variant="mail"/>,
   }
 };
 
@@ -35,7 +33,7 @@ export const Light: Story = {
     color: "text-alt",
     type: "password",
     placeholder: "Enter Password",
-    leftChild: <FaLock size={22}/>,
-    rightChild: <FaRegEyeSlash size={28}/>
+    leftChild: <Icon variant="lock"/>,
+    rightChild: <Icon variant="neye"/>
   }
 };
