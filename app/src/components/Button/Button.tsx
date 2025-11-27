@@ -7,9 +7,9 @@ const variantClasses: Record<ButtonVariant, string> = {
   nofill: ""
 };
 
-export default function Button({ variant="primary", label, color="text-default", onClick }: ButtonProps) {
-  const base = "btn font-default";
-  const classes = base + " " + variantClasses[variant] + " " + color;
+export default function Button({ variant="primary", label, style="", color="text-default", onClick }: ButtonProps) {
+  const base = "btn font-default w-full";
+  const classes = base + " " + variantClasses[variant] + " " + color + " " + style;
 
   return (
     <button className={classes} onClick={onClick}>{label}</button>

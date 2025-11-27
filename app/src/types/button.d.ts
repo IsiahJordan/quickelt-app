@@ -5,6 +5,7 @@ export interface ButtonProps {
   variant?: ButtonVariant;
   label: string;
   color?: string;
+  style?: string;
   onClick: () => void;
 }
 
