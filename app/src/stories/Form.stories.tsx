@@ -29,16 +29,17 @@ export const SignIn: Story = {
     topChild: (
       <>
         <Brand variant="full"/> 
-        <div className="text-default text-[24px]">
+        <div className="text-default text-[24px] tracking-wide font-medium">
           Create your account
         </div>
       </>
     ),
-    bottomChild: {
+    bottomChild: (
       <>
         <Button
           variant="primary"
           label="SIGN IN"
+          style="mb-[9px]"
           onClick={fn()}
         /> 
         <Button
@@ -47,8 +48,40 @@ export const SignIn: Story = {
           onClick={fn()}
         /> 
       </>
-    },
+    ),
     leftIcons: [<Icon variant="mail"/>, <Icon variant="lock"/>],
     rightIcons: [undefined, <Icon variant="neye"/>]
+  }
+};
+
+export const SignUp: Story = {
+  args: {
+    labels: ["Email", "Username", "Password", "Repassword"],
+    types: ["email", "text", "password", "password"],
+    topChild: (
+      <>
+        <Brand variant="full"/> 
+        <div className="text-default text-[24px] tracking-wide font-medium">
+          Create your account
+        </div>
+      </>
+    ),
+    bottomChild: (
+      <>
+        <Button
+          variant="primary"
+          label="SIGN UP"
+          style="mb-[9px]"
+          onClick={fn()}
+        /> 
+        <Button
+          variant="secondary"
+          label="CONTINUE WITH LOGIN"
+          onClick={fn()}
+        /> 
+      </>
+    ),
+    leftIcons: [<Icon variant="mail"/>, <Icon variant="profile"/>, <Icon variant="lock"/>, <Icon variant="lock"/>],
+    rightIcons: [undefined, undefined, <Icon variant="neye"/>, <Icon variant="neye"/>]
   }
 };

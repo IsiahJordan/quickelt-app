@@ -19,14 +19,14 @@ export default function Form({
   setter, 
   onSubmit
 }: FormProps) {
-  const base = "flex flex-col items-center w-full h-full py-4";
+  const base = "flex flex-col items-center w-full h-full py-4 my-2 px-8";
   const classes = base + " " + variantClasses[variant];
 
   return (
     <div className={classes}>
       {topChild}
       {labels.map((item, index) => (
-        <div className="my-2 w-full px-8">
+        <div className="w-full mb-4">
           <label className="label">{item}</label>
           <InputBox
             variant={variant === "large" ? "dark" : "light"}
@@ -38,7 +38,9 @@ export default function Form({
           />
         </div>
       ))}
-      {bottomChild}
+      <div className="mt-10 w-full">
+        {bottomChild}
+      </div>
     </div>
   );
 }

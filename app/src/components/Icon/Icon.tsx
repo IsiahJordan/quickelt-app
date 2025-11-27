@@ -2,6 +2,7 @@ import { IconVariant } from '@/types/icon.d.ts'
 import { IoMdMail } from "react-icons/io";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
+import { IoPerson } from "react-icons/io5";
 
 export default function Icon({ variant }: IconVariant) {
   
@@ -14,6 +15,8 @@ export default function Icon({ variant }: IconVariant) {
       return <FaLock size={22}/>;
     case "neye":
       return <FaRegEyeSlash size={28}/>;
+    case "profile":
+      return <IoPerson size={28}/>;
   }
 
   // replace this with icon placeholder
