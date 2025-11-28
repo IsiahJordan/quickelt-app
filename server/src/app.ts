@@ -1,9 +1,12 @@
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import router from './routes/router.ts';
-import cookieParser from 'cookie-parser';
+import express from 'express'
+import cors from 'cors'
+import helmet from 'helmet'
+import router from './routes/router.ts'
+import cookieParser from 'cookie-parser'
+import Log from './utility/log.ts'
 
+const log = Log("app");
+log.info("create app");
 const app = express();
 
 app.use(cors({
@@ -12,6 +15,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 

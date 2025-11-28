@@ -1,9 +1,16 @@
-import { Pool } from "pg";
-import "dotenv/config";
-import Logger from "../utility/log.ts";
+import { Pool } from 'pg'
+import Log from './log.ts'
+import 'dotenv/config'
 
-Logger.generate("Pool").debug(
-  `user: ${ process.env.DB_USER }, host: ${ process.env.DB_HOST }, database: ${ process.env.DB_NAME }, port: ${ process.env.DB_PORT }`
+const log = Log("db");
+log.debug(
+  `
+    ${process.env.DB_USER}, 
+    ${process.env.DB_HOST},
+    ${process.env.DB_NAME},
+    ${process.env.DB_PASSWORD},
+    ${process.env.DB_PORT}
+  `
 );
 
 const pool = new Pool({

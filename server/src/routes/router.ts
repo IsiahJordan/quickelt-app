@@ -1,6 +1,8 @@
 import express from "express";
 
-const router = express.Router();
+import { default as accountRouter } from './account.ts'
 
+const router = express.Router();
+router.use("/account", accountRouter);
 
 export default router;
