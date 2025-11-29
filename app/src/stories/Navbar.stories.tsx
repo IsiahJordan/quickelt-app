@@ -21,6 +21,7 @@ type Story = StoryObj<StoryProps>;
 
 export const MobileNavbar: Story = {
   args: {
+    variant: 'small',
     children: [
       <Icon variant='nav'/>
     ]
@@ -29,6 +30,7 @@ export const MobileNavbar: Story = {
 
 export const ExitMobileNavbar: Story = {
   args: {
+    variant: 'small',
     orientation: 'reverse',
     bgColor: 'bg-background-alt',
     children: [

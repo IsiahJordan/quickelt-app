@@ -29,8 +29,7 @@
 
   nav {
     @apply 
-      max-sm:min-h-[48px] sm:min-h-[72px] max-sm:w-[100%] sm:w-[45%] 
-      mx-auto sm:rounded-md sm:text-[26px] sm:tracking-wide flex items-center px-4;
+      mx-auto flex items-center px-4;
   }
 }
 
