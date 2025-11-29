@@ -23,10 +23,12 @@ export function verifyUpdate(result: object) {
   }
 }
 
-export function verifySelect(result) {
+export function verifySelect(result, log) {
   if (result.rowCount > 0) {
+    log.debug("successful select");
     return result.rows;
   }
 
+  log.warn("failed select");
   return undefined;
 }

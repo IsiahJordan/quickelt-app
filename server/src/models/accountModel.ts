@@ -5,7 +5,7 @@ import Log from '../utility/log.ts'
 export interface AccountProps {
   email: string;
   username?: string;
-  password: string;
+  password?: string;
 };
 
 export async function insertAccount({ email, username, password }: AccountProps) {

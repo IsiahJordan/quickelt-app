@@ -34,7 +34,7 @@ export async function login(req, res) {
   log.debug(`data: ${email} ${password}`);
 
   // get information from database
-  const acc = await selectAccount({ email: email });
+  const [acc] = await selectAccount({ email: email });
   log.debug(JSON.stringify(acc));
 
   // make sure that it matches the password
@@ -48,8 +48,8 @@ export async function login(req, res) {
   }
 
   // create authorization information to be used
-  const auth = { id: acc.id, email: acc.email, role: acc.role};
-  log.debug(auth);
+  const auth = {id: acc.id, email: acc.email, role: acc.role};
+  log.debug(JSON.stringify(auth));
 
   log.info("generate JWT token");
   // make sure to pass token
@@ -61,6 +61,8 @@ export async function login(req, res) {
     sameSite: "lax",
     maxAge: 60 * 60 * 1000
   });
+
+  log.debug("finish cookie")
   
   return res.status(200).json({
     success: true,

@@ -2,9 +2,10 @@ import express from 'express'
 
 const router = express.Router();
 
-import { register } from '../controllers/accountController.ts'
+import { register, login } from '../controllers/accountController.ts'
 import { requireBody, requireParams } from '../middleware/validation.ts'
 
-router.post("/register", requireParams, register);
+router.post("/register", requireBody, register);
+router.post("/login", requireBody, login);
 
 export default router;
