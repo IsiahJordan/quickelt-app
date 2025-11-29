@@ -14,8 +14,8 @@ export default function Brand({ variant="full", style }: BrandProps) {
   return (
     <div className={classes}>
       { variant === "full" ? 
-        ( <img src={BrandLogo} alt="brand-logo"/> ):
-        ( <img src={IconLogo} alt="brand-logo"/> )
+        ( <img src={BrandLogo} className={style}alt="brand-logo"/> ):
+        ( <img src={IconLogo} className={style} alt="brand-logo"/> )
       }
     </div>
   );
