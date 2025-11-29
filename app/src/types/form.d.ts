@@ -11,5 +11,5 @@ export interface FormProps = {
   leftIcons?: Array<React.ReactNode>;
   rightIcons?: Array<React.ReactNode>;
   setter: React.Dispatch<React.SetStateAction<Array<string>>>; // usestate<Array<string>> for input onChange
-  onSubmit: () => void; 
+  style?: string;
 };

@@ -7,8 +7,8 @@ const variantClasses: Record<BrandVariant, string> = {
   short: ""
 };
 
-export default function Brand({ variant="full" }: BrandProps) {
-  const base = "bg-background";
+export default function Brand({ variant="full", style }: BrandProps) {
+  const base = "bg-background flex justify-center";
   const classes = base + " " + variantClasses[variant];
 
   return (
