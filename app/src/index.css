@@ -72,4 +72,9 @@
     @apply
       flex flex-row-reverse items-center ml-2;
   } 
+
+  .badge {
+    @apply
+      rounded-[10px] text-center sm:text-[16px] max-sm:text-[15px];
+  }
 }
