@@ -18,14 +18,14 @@ export default function InputBox({
   const inputBase = "input font-default";
   const boxBase = "box font-default";
   const inputClasses = inputBase + " " + variantInputClasses[variant];
-  const boxClasses = boxBase + " " + color;
+  const boxClasses = boxBase;
   
   return (
     <div className={inputClasses}>
       { leftChild && 
         <div className="icon-input">{leftChild}</div>
       }
-      <input className={boxClasses} type={type} placeholder={placeholder}/>
+      <input className={boxClasses} type={type} placeholder={placeholder} onChange={onChange}/>
       { rightChild &&
         <div className="icon-input flex-[0.5] pr-4">{rightChild}</div>
       }
