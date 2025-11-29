@@ -30,7 +30,7 @@ export const SignIn: Story = {
       <>
         <Brand variant="full"/> 
         <div className="text-default text-[24px] tracking-wide font-medium">
-          Create your account
+          Welcome Back
         </div>
       </>
     ),
