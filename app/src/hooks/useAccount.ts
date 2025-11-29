@@ -1,6 +1,5 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query'
-import { postRegister } from '@/services/account/account.api'
-import { registerMutationOptions } from '@/services/account/account.mutation'
+import { registerMutationOptions, loginMutationOptions } from '@/services/account/account.mutation'
 import Log from '@/utils/log'
 
 export function useRegister() {
@@ -9,4 +8,12 @@ export function useRegister() {
   log.info("called");
 
   return useMutation(registerMutationOptions(queryClient));
+}
+
+export function useLogin() {
+  const queryClient = useQueryClient();
+  const log = Log("useLogin");
+  log.info("called");
+
+  return useMutation(loginMutationOptions(queryClient));
 }

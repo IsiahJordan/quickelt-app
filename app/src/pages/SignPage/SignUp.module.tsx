@@ -7,6 +7,7 @@ import Log from '@/utils/log'
 import { MediaQueryProps } from '@/types/page.d'
 import { useState } from 'react'
 import { useRegister } from '@/hooks/useAccount'
+import useNav from '@/hooks/useNav'
 
 export default function SignUp({ variant }: MediaQueryProps) {
   const log = Log("SignUp");
@@ -14,6 +15,7 @@ export default function SignUp({ variant }: MediaQueryProps) {
   log.debug(variant);
 
   const titleColor = variant === "large" ? "text-default" : "text-alt";
+  const { setQuery } = useNav();
   const [inputArray, setInputArray] = useState<Array<string>>(Array(4));
   const registerMutation = useRegister();
 
@@ -67,7 +69,7 @@ export default function SignUp({ variant }: MediaQueryProps) {
             label="CONTINUE WITH LOGIN"
             onClick={() => {
               log.info("direct to login");
-
+              setQuery({form: "in"});
             }}
           /> 
         </>

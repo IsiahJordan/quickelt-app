@@ -6,7 +6,8 @@ import Button from '@/components/Button'
 import Log from '@/utils/log'
 import { MediaQueryProps } from '@/types/page.d'
 import { useState } from 'react'
-import { useRegister } from '@/hooks/useAccount'
+import { useLogin } from '@/hooks/useAccount'
+import useNav from '@/hooks/useNav'
 
 export default function SignIn({ variant }: MediaQueryProps) {
   const log = Log("SignIn");
@@ -15,7 +16,8 @@ export default function SignIn({ variant }: MediaQueryProps) {
 
   const titleColor = variant === "large" ? "text-default" : "text-alt";
   const [inputArray, setInputArray] = useState<Array<string>>(Array(2));
-  const registerMutation = useRegister();
+  const loginMutation = useLogin();
+  const { goTo, setQuery } = useNav();
 
   const handleSubmit = async () => {
     log.info("data submit");
@@ -24,7 +26,16 @@ export default function SignIn({ variant }: MediaQueryProps) {
     const [email, password] = inputArray;
     
     log.info("login with data");
-    
+    loginMutation.mutateAsync(
+      { email, password },
+      {
+        onSuccess: (data: object) => {
+          log.info("successful register");
+          log.debug(JSON.stringify(data));
+          goTo("home");
+        }
+      }
+    );
   }
 
   return (
@@ -53,7 +64,7 @@ export default function SignIn({ variant }: MediaQueryProps) {
             label="CREATE ACCOUNT"
             onClick={() => {
               log.info("direct to login");
-
+              setQuery({form: "up"});
             }}
           /> 
         </>
