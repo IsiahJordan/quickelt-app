@@ -23,3 +23,16 @@ export async function insertAccount({ email, username, password }: AccountProps)
   return verifyInsert(result, log);
 }
 
+export async function selectAccount({ email }: AccountProps) {
+  const log = Log("selectAccount");
+  log.info("model called");
+
+  const result = await pool.query(
+    `
+      SELECT * FROM accounts
+      WHERE email = $1 LIMIT 1
+    `, [email]
+  );
+
+  return verifySelect(result, log);
+}

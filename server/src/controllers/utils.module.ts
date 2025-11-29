@@ -27,8 +27,8 @@ export async function verifyInsert(state, res) {
 }
 
 // select based output
-/*
-export function verifySelect(data: object, res: Response) {
+
+export function verifySelect(data, res) {
   if (!data) {
     return res.status(400).json({
       success: false,
@@ -43,4 +43,4 @@ export function verifySelect(data: object, res: Response) {
     data: data
   });
 
-}*/
+}
