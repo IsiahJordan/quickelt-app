@@ -5,6 +5,7 @@ import App from './App.tsx'
 import Log from '@/utils/log'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
+import { NavProvider } from '@/context/NavContext'
 
 const log = Log("GLOBAL");
 
@@ -28,9 +29,11 @@ export const queryClient = new QueryClient({
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
+      <NavProvider>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </NavProvider>
     </BrowserRouter>
   </StrictMode>,
 )
