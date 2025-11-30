@@ -7,7 +7,6 @@ describe("POST /create", () => {
     const res = await request(app)
       .post("/data/quiz/create")
       .field("name", "algebra")
-      .field("metadata", JSON.stringify({ tags: ["math","logic","puzzle"] }))
       .attach("image", path.join(__dirname, "assets/book-test.jpg"));
 
     expect(res.status).toBe(201);

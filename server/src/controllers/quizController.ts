@@ -20,11 +20,11 @@ export async function createQuiz(req, res) {
   const log = Log("createQuiz");
   log.info("info");
   
-  const {name, metadata} = req.body;
+  const {name} = req.body;
   const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
   log.debug(name);
 
-  const result = await insertQuiz({ name: name, imageUrl: imageUrl, metadata: metadata });
+  const result = await insertQuiz({ name: name, imageUrl: imageUrl });
   log.debug(JSON.stringify(result))
   
   return verifyInsert(result, res);

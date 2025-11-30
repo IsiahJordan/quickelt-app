@@ -22,17 +22,17 @@ export async function selectQuiz({ name }: QuizProps) {
   return verifySelect(result, log);
 }
 
-export async function insertQuiz({ name, imageUrl, metadata }: QuizProps) {
+export async function insertQuiz({ name, imageUrl }: QuizProps) {
   const log = Log("insertQuiz");
   log.info("model called");
 
   const result = await pool.query(
     `
       INSERT INTO quizzes
-      (name, image_url, metadata)
-      VALUES ($1, $2, $3)
+      (name, image_url)
+      VALUES ($1, $2)
       RETURNING *
-    `, [name, imageUrl, metadata]
+    `, [name, imageUrl]
   );
 
   return verifyInsert(result, log);
