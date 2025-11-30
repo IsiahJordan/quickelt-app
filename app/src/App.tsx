@@ -1,7 +1,11 @@
 import Log from '@/utils/log'
 import { Routes, Route } from 'react-router-dom'
+
 import SignPage from '@/pages/SignPage'
+import QuizPage from '@/pages/QuizPage'
+
 import DarkLayout from '@/layouts/DarkLayout'
+import NavLayout from '@/layouts/NavLayout'
 
 function App() {
   const log = Log("App");
@@ -12,6 +16,9 @@ function App() {
       <Routes>
         <Route element={<DarkLayout/>}>
           <Route path="/sign" element={<SignPage/>}/>
+          <Route element={<NavLayout/>}>
+            <Route path="/quiz" element={<QuizPage/>}/>
+          </Route>
         </Route>
       </Routes>
     </>

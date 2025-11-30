@@ -3,7 +3,7 @@ import { InputVariant, InputProps } from '@/types/inputbox.d.ts'
 const variantInputClasses: Record<InputVariant, string> = {
   dark: "bg-accent-500/60",
   light: "bg-accent-300",
-  outline: ""
+  outline: "border-solid rounded-[10px] border-default/90"
 };
 
 export default function InputBox({ 
@@ -17,7 +17,7 @@ export default function InputBox({
 } : InputProps) {
   const inputBase = "input font-default";
   const boxBase = "box font-default";
-  const inputClasses = inputBase + " " + variantInputClasses[variant];
+  const inputClasses = inputBase + " " + variantInputClasses[variant] + " " + color;
   const boxClasses = boxBase;
   
   return (

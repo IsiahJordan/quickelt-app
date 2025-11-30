@@ -1,6 +1,7 @@
 import { IconProps } from '@/types/icon.d.ts'
 import { IoMdMail } from "react-icons/io";
 import { FaRegEyeSlash } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -29,6 +30,8 @@ export default function Icon({ variant, color="text-default" }: IconProps) {
       return <RxHamburgerMenu size={28} color={color}/>;
     case "exit":
       return <RxCross1 size={28} color={color}/>
+    case "search":
+      return <FaSearch size={18} color={color}/>
   }
 
   // replace this with icon placeholder

@@ -31,6 +31,11 @@
     @apply 
       mx-auto flex items-center px-4;
   }
+
+  h1 {
+    @apply
+      text-[36px];
+  }
 }
 
 @layer components {
@@ -48,7 +53,7 @@
     @apply 
       rounded-lg
       sm:px-3 max-sm:px-4
-      sm:py-5 max-sm:py-4
+      sm:py-3 max-sm:py-4
       border border-alt
       flex;
   }
