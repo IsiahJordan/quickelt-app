@@ -3,11 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from strawberry.fastapi import GraphQLRouter
 
 from .utils.file import read_json 
-from .routers.question import schema as question_schema
+from .schema.schema import schema
 
 config: dict = read_json("settings.json")
 
-question_router = GraphQLRouter(question_schema)
+_schema = GraphQLRouter(schema)
 
 app = FastAPI()
 app.add_middleware(
@@ -18,4 +18,4 @@ app.add_middleware(
     allow_headers=config["cors"]["headers"]
 )
 
-app.include_router(question_router, prefix="/api/question")
+app.include_router(_schema, prefix="/graphql")
