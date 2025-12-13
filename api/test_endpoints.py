@@ -24,7 +24,7 @@ def test_set_question():
         }
     }
 
-    response = client.post("/api/question", json={"query": query, "variables": variables})
+    response = client.post("/graphql", json={"query": query, "variables": variables})
     assert response.status_code == 200
     assert response.json()["data"]["setQuestion"]["quizId"] == "q1"
 
@@ -46,7 +46,7 @@ def test_get_questions():
         "id": "q1"
     }
 
-    response = client.post("/api/question", json={"query": query, "variables": variables})
+    response = client.post("/graphql", json={"query": query, "variables": variables})
 
     questions = response.json()["data"]["getQuestions"]
 
