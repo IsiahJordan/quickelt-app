@@ -5,6 +5,11 @@ import router from './routes/router.ts'
 import cookieParser from 'cookie-parser'
 import Log from './utility/log.ts'
 import path from 'path'
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const log = Log("app");
 log.info("create app");
