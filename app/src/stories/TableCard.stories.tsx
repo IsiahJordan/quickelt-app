@@ -24,6 +24,7 @@ export const DarkTableCard: Story = {
       'max-sm:w-[35vw] sm:w-[40vw] mx-2',
       'max-sm:w-[20vw] sm:flex-1',
     ],
+    onClick: () => {},
     children: [
       (<Icon variant='image' color='text-default'/>),
       (<h2>Computer Science</h2>),
@@ -35,6 +36,7 @@ export const DarkTableCard: Story = {
 export const LightTableCard: Story = {
   args: {
     variant: 'light',
+    onClick: () => {},
     styles: [
       'max-sm:w-[35vw] sm:flex-1 ml-1',
       'max-sm:w-[35vw] sm:w-[40vw]',

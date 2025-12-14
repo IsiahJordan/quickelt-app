@@ -5,13 +5,13 @@ const variantClasses: Record<TableCardVariant, string> = {
   dark: "bg-background-accent/8 text-default backdrop-blur-md"
 };
 
-export default function TableCell({ variant="dark", styles, children }: TableCardProps) {
+export default function TableCell({ variant="dark", styles, onClick, children }: TableCardProps) {
   const base = "table-card flex items-center max-sm:px-1 sm:px-10 sm:tracking-wider";
   const classes = base + " " + variantClasses[variant];
   return (
-    <div className={classes}>
+    <div className={classes} onClick={onClick}>
       {children.map((item, index) => (
-        <div className={styles[index]}>
+        <div className={styles[index]} key={index}>
           {item}
         </div>
       ))}  
