@@ -11,8 +11,11 @@
 
   --color-background: #000000;
   --color-background-alt: #FFFFFF;
+  --color-background-accent: #6F7990;
+  --color-background-accent-alt: #F2F3F6;
   --color-default: #FFFFFF;
   --color-alt: #000000;
+  --color-extra: #FFCA28;
 
   --color-primary-500: #4B3BC4; 
   --color-primary-700: #15171B;
@@ -81,5 +84,10 @@
   .badge {
     @apply
       rounded-[10px] text-center sm:text-[16px] max-sm:text-[15px];
+  }
+
+  .table-card {
+    @apply
+      rounded-[10px] overflow-hidden max-sm:h-16 sm:h-18 w-full sm:text-lg max-sm:text-[12px];
   }
 }

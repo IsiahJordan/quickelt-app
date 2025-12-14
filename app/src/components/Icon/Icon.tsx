@@ -6,14 +6,20 @@ import { FaLock } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross1 } from "react-icons/rx";
+import { FaRegImage } from "react-icons/fa6";
+import { IoIosThumbsUp } from "react-icons/io";
+import { IoIosThumbsDown } from "react-icons/io";
+import { useMediaQuery } from "react-responsive";
 
 const variantColor: Record<string, string> = {
   "text-default" : "#FFFFFF",
   "text-alt": "#000000",
+  "text-extra": "#FFCA28"
 };
 
 export default function Icon({ variant, color="text-default" }: IconProps) {
   color = variantColor[color];
+  const isBigScreen = useMediaQuery({query: '(min-width: 640px)'});
 
   // in the future, add logic into specific icon in responds
   // to niche use case
@@ -32,6 +38,12 @@ export default function Icon({ variant, color="text-default" }: IconProps) {
       return <RxCross1 size={28} color={color}/>
     case "search":
       return <FaSearch size={18} color={color}/>
+    case "image":
+      return <FaRegImage size={isBigScreen ? 62: 48} color={color}/>
+    case "like":
+      return <IoIosThumbsUp size={32} color={color}/>
+    case "dislike":
+      return <IoIosThumbsDown size={32} color={color}/>
   }
 
   // replace this with icon placeholder
