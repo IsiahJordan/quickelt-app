@@ -1,5 +1,5 @@
 import { verifyInsert, verifySelect } from './utils.module.ts'
-import { selectQuiz, insertQuiz } from '../models/quizModel.ts'
+import { selectQuiz, insertQuiz, selectAllQuiz } from '../models/quizModel.ts'
 import { signToken } from '../utility/security.ts'
 import Log from '../utility/log.ts'
 
@@ -30,3 +30,15 @@ export async function createQuiz(req, res) {
   return verifyInsert(result, res);
 }
 
+export async function fetchAllQuiz(req, res) {
+  const log = Log("fetchAllQuiz");
+  log.info("info");
+
+  const {page, limit} = req.query;
+  log.debug(`${page}, ${limit}`);
+
+  const result = await selectAllQuiz({ page: page, limit: limit });
+  log.debug(JSON.stringify(result))
+  
+  return verifySelect(result, res);
+}

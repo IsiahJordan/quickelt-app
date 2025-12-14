@@ -3,9 +3,11 @@ import pool from '../utility/db.ts'
 import Log from '../utility/log.ts'
 
 export interface QuizProps {
-  name: string;
+  name?: string;
   imageUrl?: string;
   metadata?: object;
+  page?: number;
+  limit?: number;
 };
 
 export async function selectQuiz({ name }: QuizProps) {
@@ -17,6 +19,20 @@ export async function selectQuiz({ name }: QuizProps) {
       SELECT * FROM quizzes
       WHERE name = $1 LIMIT 1
     `, [name]
+  );
+
+  return verifySelect(result, log);
+}
+
+export async function selectAllQuiz({ page, limit }: QuizProps) {
+  const log = Log("selectAllQuiz");
+  log.info("model called");
+
+  const result = await pool.query(
+    `
+      SELECT * FROM quizzes
+      LIMIT $1 OFFSET $2
+    `, [limit, page]
   );
 
   return verifySelect(result, log);

@@ -4,10 +4,11 @@ import multer from 'multer'
 const router = express.Router();
 const upload = multer({dest: "uploads/"});
 
-import { fetchQuiz, createQuiz } from '../controllers/quizController.ts'
+import { fetchQuiz, createQuiz, fetchAllQuiz } from '../controllers/quizController.ts'
 import { requireBody, requireParams } from '../middleware/validation.ts'
 
-router.get("/list", requireParams, fetchQuiz);
+router.get("/fetch", requireParams, fetchQuiz);
+router.get("/list", requireParams, fetchAllQuiz);
 router.post("/create", upload.single("image"), requireBody, createQuiz);
 
 export default router;

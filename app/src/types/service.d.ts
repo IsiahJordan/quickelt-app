@@ -4,3 +4,8 @@ export type AccountProps = {
   email: string;
   password?:string;
 };
+
+export type QuizProps = {
+  page: number;
+  limit: number;
+};
