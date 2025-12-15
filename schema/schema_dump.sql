@@ -2,9 +2,9 @@
 -- PostgreSQL database dump
 --
 
-\restrict JCPl63XuTOvs9ycim9fRhpizNR9dBfiPQbtc9EUlDukCJEBwRp8czbCSp4m4qnS
+\restrict gqb77eW4yr0yGnALcNdoPwN14IqGezSD6luIfsflTXOHD2rxcB1wdGjMmyj991T
 
--- Dumped from database version 18.0
+-- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
 
 SET statement_timeout = 0;
@@ -67,11 +67,171 @@ CREATE TABLE public.accounts (
 ALTER TABLE public.accounts OWNER TO postgres;
 
 --
+-- Name: quiz_tag; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.quiz_tag (
+    id integer NOT NULL,
+    quiz_id uuid,
+    tag_id integer NOT NULL
+);
+
+
+ALTER TABLE public.quiz_tag OWNER TO postgres;
+
+--
+-- Name: quiz_tag_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.quiz_tag_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.quiz_tag_id_seq OWNER TO postgres;
+
+--
+-- Name: quiz_tag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.quiz_tag_id_seq OWNED BY public.quiz_tag.id;
+
+
+--
+-- Name: quiz_tag_tag_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.quiz_tag_tag_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.quiz_tag_tag_id_seq OWNER TO postgres;
+
+--
+-- Name: quiz_tag_tag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.quiz_tag_tag_id_seq OWNED BY public.quiz_tag.tag_id;
+
+
+--
+-- Name: quizzes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.quizzes (
+    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    name character varying(100) NOT NULL,
+    image_url text,
+    created_at timestamp with time zone DEFAULT now(),
+    updated_at timestamp with time zone,
+    metadata jsonb
+);
+
+
+ALTER TABLE public.quizzes OWNER TO postgres;
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tags (
+    id integer NOT NULL,
+    name character varying(50)
+);
+
+
+ALTER TABLE public.tags OWNER TO postgres;
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tags_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.tags_id_seq OWNER TO postgres;
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tags_id_seq OWNED BY public.tags.id;
+
+
+--
+-- Name: quiz_tag id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.quiz_tag ALTER COLUMN id SET DEFAULT nextval('public.quiz_tag_id_seq'::regclass);
+
+
+--
+-- Name: quiz_tag tag_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.quiz_tag ALTER COLUMN tag_id SET DEFAULT nextval('public.quiz_tag_tag_id_seq'::regclass);
+
+
+--
+-- Name: tags id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tags ALTER COLUMN id SET DEFAULT nextval('public.tags_id_seq'::regclass);
+
+
+--
 -- Name: accounts accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.accounts
     ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tags name_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tags
+    ADD CONSTRAINT name_unique UNIQUE (name);
+
+
+--
+-- Name: quiz_tag quiz_tag_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.quiz_tag
+    ADD CONSTRAINT quiz_tag_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: quizzes quizzes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.quizzes
+    ADD CONSTRAINT quizzes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
 
 
 --
@@ -83,8 +243,24 @@ ALTER TABLE ONLY public.accounts
 
 
 --
+-- Name: quiz_tag fk_quiz_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.quiz_tag
+    ADD CONSTRAINT fk_quiz_id FOREIGN KEY (quiz_id) REFERENCES public.quizzes(id) ON DELETE CASCADE;
+
+
+--
+-- Name: quiz_tag fk_tag_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.quiz_tag
+    ADD CONSTRAINT fk_tag_id FOREIGN KEY (tag_id) REFERENCES public.tags(id) ON DELETE CASCADE;
+
+
+--
 -- PostgreSQL database dump complete
 --
 
-\unrestrict JCPl63XuTOvs9ycim9fRhpizNR9dBfiPQbtc9EUlDukCJEBwRp8czbCSp4m4qnS
+\unrestrict gqb77eW4yr0yGnALcNdoPwN14IqGezSD6luIfsflTXOHD2rxcB1wdGjMmyj991T
 
