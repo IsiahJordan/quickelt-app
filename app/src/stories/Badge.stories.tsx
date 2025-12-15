@@ -9,6 +9,9 @@ const meta: Meta<StoryProps> = {
   component: Badge, 
   title: 'Badge', 
   tags: ['autodocs'], 
+  args: {
+    onClick: fn()
+  }
 } satisfies Meta<typeof Badge>; 
 
 export default meta; 
