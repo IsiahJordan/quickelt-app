@@ -22,3 +22,18 @@ export async function getQuizList({ page, limit }: QuizProps) {
 
   return data.data;
 }
+
+export async function getTagList() {
+  const log = Log("getTagList");
+  log.info("called");
+  
+  const res = await api.get("/quiz/tag/list", {params: {}});
+
+  const data = res.data;
+
+  if (!data.success) {
+    throw Error(data.message);
+  }
+
+  return data.data;
+}

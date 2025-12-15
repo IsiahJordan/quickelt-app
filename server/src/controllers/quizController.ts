@@ -1,33 +1,23 @@
 import { verifyInsert, verifySelect } from './utils.module.ts'
-import { selectQuiz, insertQuiz, selectAllQuiz } from '../models/quizModel.ts'
+import { selectQuiz, insertQuiz, selectAllQuiz, insertTag, selectAllTag } from '../models/quizModel.ts'
 import { signToken } from '../utility/security.ts'
 import Log from '../utility/log.ts'
+
+//
+// fetch quiz and tag
+//
 
 export async function fetchQuiz(req, res) {
   const log = Log("fetchQuiz");
   log.info("info");
   
-  const {name} = req.query;
-  log.debug(name);
+  const {quizId} = req.query;
+  log.debug(quizId);
 
-  const result = await selectQuiz({ name: name });
+  const result = await selectQuiz({ quizId: quizId });
   log.debug(JSON.stringify(result))
   
   return verifySelect(result, res);
-}
-
-export async function createQuiz(req, res) {
-  const log = Log("createQuiz");
-  log.info("info");
-  
-  const {name} = req.body;
-  const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
-  log.debug(name);
-
-  const result = await insertQuiz({ name: name, imageUrl: imageUrl });
-  log.debug(JSON.stringify(result))
-  
-  return verifyInsert(result, res);
 }
 
 export async function fetchAllQuiz(req, res) {
@@ -41,4 +31,43 @@ export async function fetchAllQuiz(req, res) {
   log.debug(JSON.stringify(result))
   
   return verifySelect(result, res);
+}
+
+export async function fetchAllTag(req, res) {
+  const log = Log("fetchAllTag");
+  log.info("info");
+  
+  const result = await selectAllTag();
+  log.debug(JSON.stringify(result));
+
+  return verifySelect(result, res);
+}
+
+//
+// create quiz and tag
+//
+
+export async function createTag(req, res) {
+  const log = Log("createTag");
+  log.info("info");
+  
+  const {name} = req.body;
+
+  const result = await insertTag({ name: name });
+  
+  return verifyInsert(result, res);
+}
+
+export async function createQuiz(req, res) {
+  const log = Log("createQuiz");
+  log.info("info");
+  
+  const {name, metadata} = req.body;
+  const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+  log.debug(name);
+
+  const result = await insertQuiz({ name: name, imageUrl: imageUrl, metadata: metadata });
+  log.debug(JSON.stringify(result))
+  
+  return verifyInsert(result, res);
 }

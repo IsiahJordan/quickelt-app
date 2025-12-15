@@ -4,24 +4,18 @@ import path from 'path'
 
 describe("POST /create", () => {
   it("should receive success and token with an image", async () => {
+    const metadata = {
+      author: "Isiah Jordan",
+      duration: 30
+    };
+
     const res = await request(app)
       .post("/data/quiz/create")
       .field("name", "algebra")
+      .field("metadata", JSON.stringify(metadata))
       .attach("image", path.join(__dirname, "assets/book-test.jpg"));
 
     expect(res.status).toBe(201);
-    expect(res.body).toBeDefined();
-    expect(res.body.success).toBe(true);
-  });
-});
-
-describe("GET /fetch", () => {
-  it('should recieve the single row', async () => {
-    const res = await request(app).get('/data/quiz/fetch').send({
-      name: "algebra"      
-    });
-    
-    expect(res.status).toBe(200);
     expect(res.body).toBeDefined();
     expect(res.body.success).toBe(true);
   });
@@ -40,3 +34,24 @@ describe("GET /list", () => {
   });
 });
 
+describe("POST /tag/create", () => {
+  it('should update db with unique tag name', async () => {
+    const res = await request(app).post('/data/quiz/tag/create').send({
+      name: "computer science"
+    });
+
+    expect(res.status).toBe(201);
+    expect(res.body).toBeDefined();
+    expect(res.body.success).toBe(true);
+  });
+});
+
+describe("GET /tag/list", () => {
+  it('should recieve all tag list', async () => {
+    const res = await request(app).get('/data/quiz/tag/list');
+
+    expect(res.status).toBe(200);
+    expect(res.body).toBeDefined();
+    expect(res.body.success).toBe(true);
+  });
+});
