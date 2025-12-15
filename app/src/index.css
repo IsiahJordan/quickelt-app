@@ -83,7 +83,7 @@
 
   .badge {
     @apply
-      rounded-[10px] text-center sm:text-[16px] max-sm:text-[15px];
+      rounded-[10px] text-center sm:text-[16px] max-sm:text-[15px] cursor-pointer;
   }
 
   .table-card {
