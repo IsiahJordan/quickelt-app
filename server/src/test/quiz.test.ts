@@ -6,6 +6,7 @@ describe("POST /create", () => {
   it("should receive success and token with an image", async () => {
     const metadata = {
       author: "Isiah Jordan",
+      description: "this quiz is about computer science concepts from year 1 in college to 4th year in BSCS degree",
       duration: 30
     };
 
