@@ -37,3 +37,22 @@ export async function getTagList() {
 
   return data.data;
 }
+
+export async function getTags({ quizId }: QuizProps) {
+  const log = Log("getTags");
+  log.info("called");
+
+  const res = await api.get("/shared/fetch/quiz/tag", {
+    params: {
+      quizId: quizId
+    }
+  });
+
+  const data = res.data;
+
+  if (!data.success) {
+    throw Error(data.message);
+  }
+
+  return data.data;
+}
