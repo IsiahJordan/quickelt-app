@@ -5,6 +5,7 @@ import Log from '@/utils/log'
 
 import { useState, useEffect } from 'react'
 import { useQuizList, useTagList } from '@/hooks/useQuiz'
+import { getImage } from  '@/services/helper/helper.api.ts'
 import TableCard from '@/components/TableCard'
 
 export default function QuizPage() {
@@ -68,7 +69,10 @@ export default function QuizPage() {
           ]}
           onClick={() => log.debug(quiz.id)}
         >
-          <Icon variant="image" color="text-default" />
+          {<img
+            src={getImage({imageUrl: quiz.image_url })}
+            alt={quiz.image_url}
+          /> ?? <Icon variant="image" color="text-default" />}
           <h2>{quiz.name ?? 'Not Applicable'}</h2>
           <h2>{quiz.metadata.author ?? 'Unknown'}</h2>
         </TableCard>

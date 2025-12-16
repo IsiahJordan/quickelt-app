@@ -9,3 +9,7 @@ export type QuizProps = {
   page: number;
   limit: number;
 };
+
+export type UploadProps = {
+  imageUrl: string;
+}
