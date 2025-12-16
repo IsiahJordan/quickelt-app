@@ -1,4 +1,4 @@
-import { getQuizListOptions, getTagListOptions } from '@/services/quiz/quiz.query.ts'
+import { getQuizListOptions, getTagListOptions, getTagsOptions } from '@/services/quiz/quiz.query.ts'
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query'
 
 import Log from '@/utils/log'
@@ -15,4 +15,11 @@ export function useTagList() {
   log.info("called");
 
   return useQuery(getTagListOptions());
+}
+
+export function useTags(quizId: string) {
+  const log = Log("useTags");
+  log.info("called");
+
+  return useQuery(getTagsOptions(quizId));
 }
