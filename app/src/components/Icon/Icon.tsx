@@ -9,6 +9,9 @@ import { RxCross1 } from "react-icons/rx";
 import { FaRegImage } from "react-icons/fa6";
 import { IoIosThumbsUp } from "react-icons/io";
 import { IoIosThumbsDown } from "react-icons/io";
+import { CiHeart } from "react-icons/ci";
+import { LuMessageCircleMore } from "react-icons/lu";
+
 import { useMediaQuery } from "react-responsive";
 
 const variantColor: Record<string, string> = {
@@ -24,6 +27,8 @@ export default function Icon({ variant, color="text-default" }: IconProps) {
   // in the future, add logic into specific icon in responds
   // to niche use case
   switch (variant) {
+    case "message":
+      return <LuMessageCircleMore size={36} color={color}/>
     case "mail":
       return <IoMdMail size={28} color={color}/>;
     case "lock":
@@ -44,6 +49,8 @@ export default function Icon({ variant, color="text-default" }: IconProps) {
       return <IoIosThumbsUp size={32} color={color}/>
     case "dislike":
       return <IoIosThumbsDown size={32} color={color}/>
+    case "noheart":
+      return <CiHeart size={38} color={color}/>
   }
 
   // replace this with icon placeholder

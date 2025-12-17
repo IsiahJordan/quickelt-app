@@ -6,6 +6,7 @@ import Log from '@/utils/log'
 import { useState, useEffect } from 'react'
 import { useQuizList, useTagList } from '@/hooks/useQuiz'
 import { getImage } from  '@/services/helper/helper.api.ts'
+import useNav from '@/hooks/useNav';
 import TableCard from '@/components/TableCard'
 
 export default function QuizListPage() {
@@ -16,6 +17,8 @@ export default function QuizListPage() {
 
   const { data: quiz_data } = useQuizList(0, 10);
   const { data: tag_data } = useTagList();
+
+  const { setQuery } = useNav();
 
   useEffect(() => {
     if (!tag_data) return;
@@ -67,7 +70,7 @@ export default function QuizListPage() {
             'max-sm:w-[35vw] sm:w-[40vw] mx-2',
             'max-sm:w-[20vw] sm:flex-1',
           ]}
-          onClick={() => log.debug(quiz.id)}
+          onClick={() => setQuery({view: quiz.id})}
         >
           {<img
             src={getImage({imageUrl: quiz.image_url })}

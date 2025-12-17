@@ -56,3 +56,24 @@ export async function getTags({ quizId }: QuizProps) {
 
   return data.data;
 }
+
+export async function getQuiz({ quizId }: QuizProps) {
+  const log = Log("getQuiz");
+  log.info("called");
+  log.debug(quizId);
+
+  const res = await api.get("/quiz/fetch", {
+    params: {
+      quizId: quizId
+    }
+  });
+
+  const data = res.data;
+  log.debug(JSON.stringify(data));
+
+  if (!data.success) {
+    throw Error(data.message);
+  }
+
+  return data.data[0];
+}

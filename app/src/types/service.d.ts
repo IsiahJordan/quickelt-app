@@ -6,8 +6,9 @@ export type AccountProps = {
 };
 
 export type QuizProps = {
-  page: number;
-  limit: number;
+  page?: number;
+  limit?: number;
+  quizId?: string;
 };
 
 export type UploadProps = {

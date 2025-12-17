@@ -1,5 +1,4 @@
-import { getQuizList, getTagList, getTags } from './quiz.api.ts'
-import Log from '@/utils/log'
+import { getQuizList, getTagList, getTags, getQuiz } from './quiz.api.ts'
 
 export const getQuizListOptions = (page: number, limit: number) => ({
   queryKey: ['quizList', page, limit],
@@ -13,5 +12,12 @@ export const getTagListOptions = () => ({
 
 export const getTagsOptions = (quizId: string) => ({
   queryKey: ['tags', quizId],
-  queryFn: () => getTags({quizId})
+  queryFn: () => getTags({quizId}),
+  enabled: !!quizId
+});
+
+export const getQuizOptions = (quizId: string) => ({
+  queryKey: ['quiz', quizId],
+  queryFn: () => getQuiz({quizId}),
+  enabled: !!quizId
 });
