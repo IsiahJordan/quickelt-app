@@ -1,7 +1,6 @@
 import Log from '../utility/log.ts'
-import { selectQuizTag, selectTagQuiz, insertQuizTag } from '../models/sharedModel.ts'
+import { selectQuizTag, selectQuizTaken, selectTagQuiz, insertQuizTag } from '../models/sharedModel.ts'
 import { verifyInsert, verifySelect } from './utils.module.ts'
-
 
 export async function fetchQuizTag(req, res) {
   const log = Log("fetchQuizTag");
@@ -10,6 +9,17 @@ export async function fetchQuizTag(req, res) {
   log.debug(quizId);
 
   const result = await selectQuizTag({ quizId: quizId });
+
+  return verifySelect(result, res);
+}
+
+export async function fetchQuizTaken(req, res) {
+  const log = Log("fetchQuizTaken");
+
+  const {quizId, accountId} = req.query;
+  log.debug(`${quizId}, ${accountId}`);
+  
+  const result = await selectQuizTaken({ quizId: quizId, accountId: accountId });
 
   return verifySelect(result, res);
 }
@@ -35,3 +45,4 @@ export async function createQuizTag(req, res) {
 
   return verifyInsert(result, res);
 }
+
