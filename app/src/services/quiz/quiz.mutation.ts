@@ -3,9 +3,9 @@ import { postQuizAccount } from './quiz.api.ts'
 
 const log = Log("quiz.mutation");
 
-export const postQuizAccountOptions = (queryClient) => {
+export const postQuizAccountOptions = (queryClient) => ({
   mutationFn: postQuizAccount,
   onSuccess: (data) => {
-    log.debug("Successful quiz account create");
+    log.debug("successful quiz account create");
   }
-};
+});
