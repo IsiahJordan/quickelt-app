@@ -20,6 +20,9 @@
   --color-secondary-500: #FF9D00;
   --color-accent-500: #5A6396;
   --color-accent-300: #F5F4F4;
+  
+  --font-barlow: "Barlow", sans-serif;
+  --font-lato: "Lato", sans-serif;
 }
 
 @layer base {
