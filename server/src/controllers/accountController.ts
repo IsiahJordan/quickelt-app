@@ -63,7 +63,8 @@ export async function login(req, res) {
   });
 
   log.debug("finish cookie")
-  
+  log.debug(JSON.stringify(res.getHeaders(), null, 2));
+
   return res.status(200).json({
     success: true,
     message: "successful login"

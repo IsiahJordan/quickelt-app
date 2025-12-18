@@ -32,7 +32,7 @@ export default function SignIn({ variant }: MediaQueryProps) {
         onSuccess: (data: object) => {
           log.info("successful register");
           log.debug(JSON.stringify(data));
-          goTo("home");
+          goTo("quiz");
         }
       }
     );
