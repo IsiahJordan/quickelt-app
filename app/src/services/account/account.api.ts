@@ -21,3 +21,4 @@ export async function postLogin({ email, password }: AccountProps) {
 
   return res.data;
 }
+
