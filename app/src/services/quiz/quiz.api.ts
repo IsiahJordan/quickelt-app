@@ -77,3 +77,40 @@ export async function getQuiz({ quizId }: QuizProps) {
 
   return data.data[0];
 }
+
+export async function getQuizAccount({ quizId, accountId }: QuizProps) {
+  const log = Log("getQuizAccount");
+  log.info("called");
+  log.debug(`${quizId}, ${accountId}`);
+
+  const res = await api.get("/shared/fetch/quiz/account", {
+    params: {
+      quizId: quizId,
+      accountId: accountId
+    }
+  });
+
+  const data = res.data;
+
+  if (!data.success) {
+    throw Error(data.message);
+  }
+
+  return data.data[0];
+}
+
+export async function postQuizAccount({ quizId, accountId }: QuizProps) {
+  const log = Log("postQuizAccount");
+  log.info("called");
+  log.debug(`${quizId}, ${accountId}`);
+  
+  const res = await api.post("/shared/create/quiz/account", { quizId, accountId });
+
+  const data = res.data;
+
+  if (!data.success) {
+    throw Error(data.message);
+  }
+
+  return data;
+}

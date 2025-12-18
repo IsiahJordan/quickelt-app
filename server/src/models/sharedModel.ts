@@ -35,6 +35,7 @@ export async function selectQuizTaken({ quizId, accountId }: QuizAccountProps) {
     `
       SELECT * FROM quiz_taken
       WHERE quiz_id = $1 AND account_id = $2
+      ORDER BY date_taken DESC
     `, [quizId, accountId]
   );
 
