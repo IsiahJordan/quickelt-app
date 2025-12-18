@@ -1,7 +1,7 @@
 
 export type AccountProps = {
   username?: string;
-  email: string;
+  email?: string;
   password?:string;
 };
 
