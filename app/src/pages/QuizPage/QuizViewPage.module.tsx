@@ -3,9 +3,10 @@ import Icon from '@/components/Icon'
 import Badge from '@/components/Badge'
 import Button from '@/components/Button'
 
-import { useState, useEffect } from 'react'
-import { useQuiz, useTags } from '@/hooks/useQuiz'
+import { useState, useEffect, useRef } from 'react'
+import { useQuiz, useTags, useCreateQuizAccount, useFetchQuizAccount } from '@/hooks/useQuiz'
 import { getImage } from  '@/services/helper/helper.api.ts'
+import { isExpiredTZ } from '@/utils/aggregate'
 import useNav from '@/hooks/useNav'
 
 export default function QuizViewPage({ quizId }: { quizId: string }) {
@@ -14,6 +15,11 @@ export default function QuizViewPage({ quizId }: { quizId: string }) {
   
   const { goBack } = useNav();
   const { data: quiz_data, isLoading, error } = useQuiz(quizId);
+
+  const createAttemptMutation = useCreateQuizAccount();
+  const fetchAttemptMutation = useFetchQuizAccount();
+
+  const hasAttempted = useRef(false); // used for creating new attempt
 
   if (isLoading) {
     return <>Waiting...</>;
@@ -25,7 +31,45 @@ export default function QuizViewPage({ quizId }: { quizId: string }) {
   log.debug(JSON.stringify(quiz_data));
 
   const handleSubmit = () => {
+    log.debug("clicked take");
+    
+    log.info("fetch recent attempt");
+    fetchAttemptMutation.mutate(
+      { quizId },
+      {
+        onSuccess: (data: object) => {
+          const datetime = data.date_taken;
+          const expiredDate = new Date(Date.now());
+          expiredDate.setMinutes(expiredDate.getMinutes() + quiz_data.metadata.duration);
+          log.debug(expiredDate.toISOString());
 
+          const isValid = isExpiredTZ(datetime, new Date(expiredDate).toISOString());
+
+          log.debug(`this is a ${isValid}`);
+          hasAttempted = true;
+        },
+        onError: () => {
+          log.debug("failed to find attempt");
+        }
+      }
+    );
+
+    // the attempt is created if 
+    // there is no recent attempts
+    // or if the previous attempt
+    // is invalid based on datetime
+    if (!hasAttempted) {
+      log.info("create new attempt");
+
+      createAttemptMutation.mutate(
+        { quizId },
+        {
+          onSuccess: (data: object) => {
+            log.debug("successful create");
+          }
+        }
+      );
+    }
   };
   
   return (
@@ -65,7 +109,7 @@ export default function QuizViewPage({ quizId }: { quizId: string }) {
               variant="accent"
               label={<Icon variant="message" color="text-default"/>}
               style="flex-[0.2] flex justify-center items-center"
-              onClick={handleSubmit}
+              onClick={() => log.debug("click feedback")}
             /> 
           </div>
         </div>

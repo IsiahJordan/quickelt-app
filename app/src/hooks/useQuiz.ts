@@ -1,4 +1,13 @@
-import { getQuizListOptions, getTagListOptions, getTagsOptions, getQuizOptions, postQuizAccountOptions } from '@/services/quiz/quiz.query.ts'
+import { 
+  getQuizListOptions, 
+  getTagListOptions, 
+  getTagsOptions, 
+  getQuizOptions 
+} from '@/services/quiz/quiz.query.ts'
+import {
+  postFetchQuizAccountOptions, 
+  postCreateQuizAccountOptions 
+} from '@/services/quiz/quiz.mutation.ts'
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query'
 
 import Log from '@/utils/log'
@@ -33,9 +42,20 @@ export function useQuiz(quizId: string) {
   return useQuery(getQuizOptions(quizId));
 }
 
-export function useQuizAccount(quizId: string, accountId: string) {
-  const log = Log("useQuizAccount");
+export function useCreateQuizAccount() {
+  const log = Log("useCreateQuizAccount");
   log.info("called");
 
-  return 
+  const queryClient = useQueryClient();
+
+  return useMutation(postCreateQuizAccountOptions(queryClient));
+}
+
+export function useFetchQuizAccount() {
+  const log = Log("useFetchQuizAccount");
+  log.info("called");
+
+  const queryClient = useQueryClient();
+
+  return useMutation(postFetchQuizAccountOptions(queryClient));
 }

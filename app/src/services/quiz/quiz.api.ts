@@ -78,17 +78,14 @@ export async function getQuiz({ quizId }: QuizProps) {
   return data.data[0];
 }
 
-export async function getQuizAccount({ quizId, accountId }: QuizProps) {
-  const log = Log("getQuizAccount");
+export async function postFetchQuizAccount({ quizId }: QuizProps) {
+  const log = Log("postFetchQuizAccount");
   log.info("called");
-  log.debug(`${quizId}, ${accountId}`);
+  log.debug(`${quizId} `);
 
-  const res = await api.get("/shared/fetch/quiz/account", {
-    params: {
-      quizId: quizId,
-      accountId: accountId
-    }
-  });
+  const res = await api.post("/shared/fetch/quiz/account", 
+                             { quizId: quizId },
+                             { withCredentials: true });
 
   const data = res.data;
 
@@ -99,12 +96,14 @@ export async function getQuizAccount({ quizId, accountId }: QuizProps) {
   return data.data[0];
 }
 
-export async function postQuizAccount({ quizId, accountId }: QuizProps) {
-  const log = Log("postQuizAccount");
+export async function postCreateQuizAccount({ quizId }: QuizProps) {
+  const log = Log("postCreateQuizAccount");
   log.info("called");
-  log.debug(`${quizId}, ${accountId}`);
+  log.debug(`${quizId}`);
   
-  const res = await api.post("/shared/create/quiz/account", { quizId, accountId });
+  const res = await api.post("/shared/create/quiz/account", 
+                             { quizId }, 
+                             { withCredentials: true });
 
   const data = res.data;
 
@@ -114,3 +113,4 @@ export async function postQuizAccount({ quizId, accountId }: QuizProps) {
 
   return data;
 }
+
