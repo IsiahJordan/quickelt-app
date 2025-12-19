@@ -46,7 +46,7 @@ export default function QuizViewPage({ quizId }: { quizId: string }) {
           const isValid = isExpiredTZ(datetime, new Date(expiredDate).toISOString());
 
           log.debug(`this is a ${isValid}`);
-          hasAttempted = true;
+          hasAttempted.current = isValid;
         },
         onError: () => {
           log.debug("failed to find attempt");
@@ -54,11 +54,13 @@ export default function QuizViewPage({ quizId }: { quizId: string }) {
       }
     );
 
+    log.debug(`status of attempted ${hasAttempted.current}`);
+
     // the attempt is created if 
     // there is no recent attempts
     // or if the previous attempt
-    // is invalid based on datetime
-    if (!hasAttempted) {
+    // is invalid based on datetime[Fri, 19 Dec 2025 05:51:30 GMT] [QuizViewPage] [DEBUG] → failed to find attempt
+    if (!hasAttempted.current) {
       log.info("create new attempt");
 
       createAttemptMutation.mutate(

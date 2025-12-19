@@ -1,4 +1,4 @@
-
+import Log from './log'
 
 export function getDateFromTZ(timestamptz: string) {
   return (/\d{4}-\d{2}-\d{2}/g).exec(timestamptz);
@@ -27,12 +27,21 @@ export function getMillisecondsFromTime(time: string) {
 }
 
 export function isExpiredTZ(timestamptz: string, expected: string) {
+  const log = Log("isExperiedTZ");
+
   const tz_date = getDateFromTZ(timestamptz);
   const tz_time = getTimeFromTZ(timestamptz);
   const ex_date = getDateFromTZ(expected);
   const ex_time = getTimeFromTZ(expected);
 
-  if (tz_date !== ex_date) {
+  log.debug(`tz date ${tz_date}`);
+  log.debug(`tz time ${tz_time}`);
+  log.debug(`ex date ${ex_date}`);
+  log.debug(`ex time ${ex_time}`);
+  
+
+  if (tz_date?.[0] !== ex_date?.[0]) {
+    log.debug("no valid dates");
     return false;
   }
   
@@ -45,16 +54,25 @@ export function isExpiredTZ(timestamptz: string, expected: string) {
   const tz_milliseconds = parseInt(getMillisecondsFromTime(tz_time));
   const ex_milliseconds = parseInt(getMillisecondsFromTime(ex_time));
 
-  if (tz_hours > ex_hours) {
+  log.debug(`tz hours ${tz_hours}`);
+  log.debug(`tz minutes ${tz_minutes}`);
+  log.debug(`tz seconds ${tz_seconds}`);
+  log.debug(`tz milliseconds ${tz_milliseconds}`);
+  log.debug(`ex hours ${ex_hours}`);
+  log.debug(`ex minutes ${ex_minutes}`);
+  log.debug(`ex seconds ${ex_seconds}`);
+  log.debug(`ex milliseconds ${ex_milliseconds}`);
+
+  if (tz_hours?.[0] > ex_hours?.[0]) {
     return false;
   }
-  else if (tz_minutes > ex_minutes) {
+  else if (tz_minutes?.[0] > ex_minutes?.[0]) {
     return false;
   }
-  else if (tz_seconds > ex_seconds) {
+  else if (tz_seconds?.[0] > ex_seconds?.[0]) {
     return false;
   }
-  else if (tz_milliseconds > ex_milliseconds) {
+  else if (tz_milliseconds?.[0] > ex_milliseconds?.[0]) {
     return false;
   }
 
