@@ -4,6 +4,7 @@ from strawberry.fastapi import GraphQLRouter
 
 from .utils.file import read_json 
 from .schema.schema import schema
+from .routes.router import router
 
 config: dict = read_json("settings.json")
 
@@ -19,3 +20,4 @@ app.add_middleware(
 )
 
 app.include_router(_schema, prefix="/graphql")
+app.include_router(router, prefix="/rest")
