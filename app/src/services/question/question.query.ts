@@ -12,6 +12,7 @@ export const getQuestionOptions = (quizId: string) => ({
           description
           options
           answer
+          imageUrl
         }
       } 
     `;
