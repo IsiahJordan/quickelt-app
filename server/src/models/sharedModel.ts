@@ -73,7 +73,7 @@ export async function insertQuizTag({ quizId, tagId }: QuizTagProps) {
   return verifyInsert(result, log);
 }
 
-export async function insertQuizTaken({ quizId, accountId }: QuizTaken) {
+export async function insertQuizTaken({ quizId, accountId }: QuizAccountProps) {
   const log = Log("insertQuizTaken");
   log.info("called");
 
