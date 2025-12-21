@@ -14,6 +14,7 @@ class Mutation:
             "description": input.description,
             "answer": input.answer,
             "options": input.options,
+            "image_url": input.imageUrl
         }
         result = db.insert_table("questions", doc)
         return Question(
@@ -22,4 +23,5 @@ class Mutation:
             description=input.description,
             answer=input.answer,
             options=input.options,
+            imageUrl=input.imageUrl
         )

@@ -8,6 +8,7 @@ class QuestionInput:
     description: str
     options: List[str]
     answer: int
+    imageUrl: str | None
 
 @strawberry.type
 class Question:
@@ -16,3 +17,4 @@ class Question:
     description: str
     options: List[str]
     answer: int
+    imageUrl: str | None

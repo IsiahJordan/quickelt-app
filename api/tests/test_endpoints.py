@@ -11,22 +11,24 @@ def test_set_question():
             description
             options
             answer
+            imageUrl
         }
     }
     """
 
     variables = {
         "input": {
-            "quizId": "q1",
+            "quizId": "8468026f-fb60-4cb0-8cb0-cd2b356ff73b",
             "description": "What is 2+2?",
             "options": ["1", "2", "3", "4"],
             "answer": 3,
+            "imageUrl": None
         }
     }
 
     response = client.post("/graphql", json={"query": query, "variables": variables})
     assert response.status_code == 200
-    assert response.json()["data"]["setQuestion"]["quizId"] == "q1"
+    assert response.json()["data"]["setQuestion"]["quizId"] == "8468026f-fb60-4cb0-8cb0-cd2b356ff73b"
 
 
 def test_get_questions():
@@ -38,6 +40,7 @@ def test_get_questions():
                 description
                 options
                 answer
+                imageUrl
             }
         }         
     """

@@ -18,7 +18,8 @@ class Query:
                 quizId=doc["quiz_id"],
                 description=doc["description"],
                 options=doc["options"],
-                answer=doc["answer"]
+                answer=doc["answer"],
+                imageUrl=doc["image_url"]
             )
             for doc in docs
         ]
