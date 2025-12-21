@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import SignPage from '@/pages/SignPage'
 import QuizPage from '@/pages/QuizPage'
+import QuestionPage from '@/pages/QuestionPage'
 
 import DarkLayout from '@/layouts/DarkLayout'
 import NavLayout from '@/layouts/NavLayout'
@@ -22,6 +23,9 @@ function App() {
               <Route path="/quiz" element={<QuizPage/>}/>
             </Route>
           </Route>
+        </Route>
+        <Route element={<ProtectedLayout/>}>
+          <Route path="/quiz/attempt/:id" element={<QuestionPage/>}/>
         </Route>
       </Routes>
     </>
