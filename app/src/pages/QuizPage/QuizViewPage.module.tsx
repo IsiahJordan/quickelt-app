@@ -13,7 +13,7 @@ export default function QuizViewPage({ quizId }: { quizId: string }) {
   const log = Log("QuizViewPage");
   log.debug(quizId);
   
-  const { goBack } = useNav();
+  const { goBack, goTo } = useNav();
   const { data: quiz_data, isLoading, error } = useQuiz(quizId);
 
   const createAttemptMutation = useCreateQuizAccount();
@@ -38,7 +38,7 @@ export default function QuizViewPage({ quizId }: { quizId: string }) {
       { quizId },
       {
         onSuccess: (data: object) => {
-          const datetime = data.date_taken;
+          /*const datetime = data.date_taken;
           const expiredDate = new Date(Date.now());
           expiredDate.setMinutes(expiredDate.getMinutes() + quiz_data.metadata.duration);
           log.debug(expiredDate.toISOString());
@@ -46,7 +46,9 @@ export default function QuizViewPage({ quizId }: { quizId: string }) {
           const isValid = isExpiredTZ(datetime, new Date(expiredDate).toISOString());
 
           log.debug(`this is a ${isValid}`);
-          hasAttempted.current = isValid;
+          hasAttempted.current = isValid;*/
+
+          goTo(`/quiz/attempt/${quizId}`);
         },
         onError: () => {
           log.debug("failed to find attempt");
