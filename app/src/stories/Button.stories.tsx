@@ -34,3 +34,4 @@ export const NoFill: Story = {
     color: 'text-alt'
   }
 };
+
