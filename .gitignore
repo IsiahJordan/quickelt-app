@@ -328,5 +328,6 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/dotenv,react,python,node
 
 server/uploads
+api/uploads
 
 postgres/*
