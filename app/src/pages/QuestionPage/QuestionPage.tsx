@@ -4,12 +4,15 @@ import Button from '@/components/Button'
 import { useParams } from 'react-router-dom'
 import { useQuestionList } from '@/hooks/useQuestion'
 import { useState, useEffect } from 'react'
+import { getImage } from '@/services/helper/helper.rest.ts'
 
 export default function QuestionPage() {
   const log = Log("QuestionPage");
   const { id: quizId } = useParams();
   const { data: questions_data } = useQuestionList(quizId);
   const [answers, setAnswers] = useState([]);
+
+  log.debug(JSON.stringify(questions_data));
 
   useEffect(() => {
     if (!questions_data) return;
@@ -23,7 +26,7 @@ export default function QuestionPage() {
         <div key={index} className="w-[100%]">
           <p className="max_sm:text-lg sm:text-2xl tracking-wide font-semibold mb-2">Question {index + 1}</p>
           <p className="max_sm:text-[14px] sm:text-xl font-light">{item.description}</p>
-          
+          {item.imageUrl && <img src={getImage({ imageUrl: item.imageUrl })} alt={item.imageUrl}/>}
           <div className="sm:grid sm:grid-cols-2 sm:grid-rows-2 max_sm:flex max_sm:flex-col gap-4 w-[100%] py-2">
             {item.options.map((option, indexes) => (
               <div key={indexes} className="w-[100%] py-1">
