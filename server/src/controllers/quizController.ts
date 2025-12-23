@@ -1,6 +1,13 @@
 import { verifyInsert, verifySelect } from './utils.module.ts'
-import { selectQuiz, insertQuiz, selectAllQuiz, insertTag, selectAllTag } from '../models/quizModel.ts'
-import { signToken } from '../utility/security.ts'
+import { 
+  selectQuiz, 
+  selectQuizAuthor, 
+  insertQuiz, 
+  selectAllQuiz, 
+  insertTag, 
+  selectAllTag 
+} from '../models/quizModel.ts'
+import { verifyToken } from '../utility/security.ts'
 import Log from '../utility/log.ts'
 
 //
@@ -38,6 +45,20 @@ export async function fetchAllTag(req, res) {
   log.info("info");
   
   const result = await selectAllTag();
+  log.debug(JSON.stringify(result));
+
+  return verifySelect(result, res);
+}
+
+export async function fetchQuizAuthor(req, res) {
+  const log = Log("fetchQuizAuthor");
+  log.info("called");
+
+  const token = req.cookies.access_token;
+  const decoded = await verifyToken(token);
+  log.debug(token);
+
+  const result = await selectQuizAuthor({ accountId: token.id });
   log.debug(JSON.stringify(result));
 
   return verifySelect(result, res);

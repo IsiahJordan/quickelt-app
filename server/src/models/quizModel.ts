@@ -9,6 +9,7 @@ export interface QuizProps {
   metadata?: object;
   page?: number;
   limit?: number;
+  accountId?: string;
 };
 
 export async function selectQuiz({ quizId }: QuizProps) {
@@ -83,3 +84,20 @@ export async function selectAllTag() {
 
   return verifySelect(result, log);
 }
+
+export async function selectQuizAuthor({ accountId }: QuizProps) {
+  const log = Log("selectQuizAuthor");
+  log.info("model called");
+
+  const result = await pool.query(
+    `
+      SELECT * FROM quiz_author Q
+      INNER JOIN quizzes QZ
+      ON QZ.id = Q.quiz_id
+      WHERE Q.account_id=$1
+    `, [accountId]
+  );
+
+  return verifySelect(result, log);
+}
+
