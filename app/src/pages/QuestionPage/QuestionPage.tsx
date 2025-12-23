@@ -1,5 +1,6 @@
 import Log from '@/utils/log'
 import Button from '@/components/Button'
+import Panel from '@/components/Panel'
 
 import { useParams } from 'react-router-dom'
 import { useQuestionList } from '@/hooks/useQuestion'
@@ -16,42 +17,73 @@ export default function QuestionPage() {
 
   useEffect(() => {
     if (!questions_data) return;
-    const arr = new Array(questions_data.length);
+    const arr = new Array(questions_data.length).fill(-1);
     setAnswers(arr);
   }, [questions_data]);
 
-  return (
-    <div className="flex items-center flex-col w-[60%] max-w-[46rem] mx-auto my-6">
-      {questions_data?.map((item, index) => (
-        <div key={index} className="w-[100%]">
-          <p className="max_sm:text-lg sm:text-2xl tracking-wide font-semibold mb-2">Question {index + 1}</p>
-          <p className="max_sm:text-[14px] sm:text-xl font-light">{item.description}</p>
-          {item.imageUrl && <img src={getImage({ imageUrl: item.imageUrl })} alt={item.imageUrl}/>}
-          <div className="sm:grid sm:grid-cols-2 sm:grid-rows-2 max_sm:flex max_sm:flex-col gap-4 w-[100%] py-2">
-            {item.options.map((option, indexes) => (
-              <div key={indexes} className="w-[100%] py-1">
-                <Button
-                  variant={"nofill"}
-                  label={
-                    `${String.fromCharCode('A'.charCodeAt(0) + indexes)}. ${option}`
-                  }
-                  color="text-default-alt"
-                  style="text-[12px] font-thin max-sm:min-h-12 sm:min-h-14 rounded-none"
-                  onClick={() => {
-                    log.debug(`indexes ${index}, ${indexes}`);
-                    
-                    const arr = answers;
-                    arr[index] = indexes;
-                    setAnswers(arr);
+  const handleSubmit = () => {
+    log.debug("submitted"); 
+    const isCompleted = answers.some(item => item === -1); 
+    log.debug(JSON.stringify(answers));
 
-                    log.debug(arr);
-                  }}
-                />
-              </div> 
-            ))}
+    if (isCompleted) {
+      log.warn("missing answers");
+      return;
+    }
+
+    for (let i = 0; i < answers.length; i++) {
+      if (answers[i] === Number(questions_data[i].answer)) {
+        log.debug("correct");
+      }
+    }
+  };
+
+  return (
+    <div className="my-12">
+      <div className="flex flex-col items-center flex-1 left-1/2 transform absolute -translate-x-1/2">
+        {questions_data?.map((item, index) => (
+          <div key={index} className="w-[100%] max-w-[46rem]">
+            <p className="max_sm:text-lg sm:text-2xl tracking-wide font-semibold mb-2">Question {index + 1}</p>
+            <p className="max_sm:text-[14px] sm:text-xl font-light">{item.description}</p>
+            {item.imageUrl && <img src={getImage({ imageUrl: item.imageUrl })} alt={item.imageUrl}/>}
+            <div className="sm:grid sm:grid-cols-2 sm:grid-rows-2 max_sm:flex max_sm:flex-col gap-4 w-[100%] py-2">
+              {item.options.map((option, indexes) => (
+                <div key={indexes} className="w-[100%] py-1">
+                  <Button
+                    variant={answers[index] === indexes ? "accent" : "nofill"}
+                    label={
+                      `${String.fromCharCode('A'.charCodeAt(0) + indexes)}. ${option}`
+                    }
+                    color={answers[index] === indexes ? "text-default" : "text-default-alt"}
+                    style="text-[12px] font-thin max-sm:min-h-12 sm:min-h-14 rounded-none"
+                    onClick={() => {
+                      log.debug(`indexes ${index}, ${indexes}`);
+                      
+                      const arr = answers;
+                      arr[index] = indexes;
+                      setAnswers(arr);
+
+                      log.debug(arr);
+                    }}
+                  />
+                </div> 
+              ))}
+            </div>
           </div>
-        </div>
-      ))} 
+        ))} 
+      </div>
+      <div className="px-72 right-0 w-64 fixed max-sm:invisible">
+        <Panel
+          title='Quiz List'
+          list={[
+            "Question 1", 
+            "Question 2"
+          ]}
+          style="min-w-32"
+          label="Finished"
+          onClick={handleSubmit}
+        />
+      </div>
     </div>
   ); 
 }

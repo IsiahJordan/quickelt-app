@@ -11,13 +11,15 @@ import { IoIosThumbsUp } from "react-icons/io";
 import { IoIosThumbsDown } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { LuMessageCircleMore } from "react-icons/lu";
+import { FiTarget } from "react-icons/fi";
 
 import { useMediaQuery } from "react-responsive";
 
 const variantColor: Record<string, string> = {
   "text-default" : "#FFFFFF",
   "text-alt": "#000000",
-  "text-extra": "#FFCA28"
+  "text-extra": "#FFCA28",
+  "text-accent": "#6472DC"
 };
 
 export default function Icon({ variant, color="text-default" }: IconProps) {
@@ -51,6 +53,8 @@ export default function Icon({ variant, color="text-default" }: IconProps) {
       return <IoIosThumbsDown size={32} color={color}/>
     case "noheart":
       return <CiHeart size={38} color={color}/>
+    case "target":
+      return <FiTarget size={18} color={color}/>
   }
 
   // replace this with icon placeholder
