@@ -1,17 +1,21 @@
 import Log from '@/utils/log'
 import Button from '@/components/Button'
 import Panel from '@/components/Panel'
+import useNav from '@/hooks/useNav'
 
 import { useParams } from 'react-router-dom'
 import { useQuestionList } from '@/hooks/useQuestion'
 import { useState, useEffect } from 'react'
 import { getImage } from '@/services/helper/helper.rest.ts'
+import { useAnswerList } from '@/hooks/useAnswer'
 
 export default function QuestionPage() {
   const log = Log("QuestionPage");
   const { id: quizId } = useParams();
   const { data: questions_data } = useQuestionList(quizId);
   const [answers, setAnswers] = useState([]);
+  const answerMutation = useAnswerList();
+  const { goBack } = useNav();
 
   log.debug(JSON.stringify(questions_data));
 
@@ -31,11 +35,24 @@ export default function QuestionPage() {
       return;
     }
 
+    const score = 0;
+
     for (let i = 0; i < answers.length; i++) {
-      if (answers[i] === Number(questions_data[i].answer)) {
-        log.debug("correct");
+      if (answers[i] === questions_data[i].answer) {
+        score++;
       }
     }
+    
+    // send to answer api
+    const payload = {
+      questions: questions_data,
+      answers: answers,
+      score: score,
+      total: answers.length
+    };
+    
+    answerMutation.mutate(payload);
+    goBack();
   };
 
   return (
@@ -60,7 +77,7 @@ export default function QuestionPage() {
                       log.debug(`indexes ${index}, ${indexes}`);
                       
                       const arr = answers;
-                      arr[index] = indexes;
+                      arr[index] = String(indexes);
                       setAnswers(arr);
 
                       log.debug(arr);
