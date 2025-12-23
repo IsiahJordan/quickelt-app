@@ -1,5 +1,6 @@
 import strawberry
-from strawberry.scalars import JSON, DateTime
+from strawberry.scalars import JSON
+from datetime import datetime
 
 from typing import List, Dict, Any
 
@@ -34,4 +35,4 @@ class Answer:
     answers: List[str]
     score: int
     total: int
-    createdAt: DateTime
+    createdAt: datetime
