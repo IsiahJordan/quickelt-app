@@ -88,3 +88,19 @@ export async function insertQuizTaken({ quizId, accountId }: QuizAccountProps) {
 
   return verifyInsert(result, log);
 }
+1
+export async function insertQuizAuthor({ quizId, accountId }: QuizAccountProps) {
+  const log = Log("insertQuizAuthor");
+  log.info("called");
+
+  const result = await pool.query(
+    `
+      INSERT INTO quiz_author
+      (quiz_id, account_id)
+      VALUES ($1, $2)
+      RETURNING *
+    `, [quizId, accountId]
+  );
+
+  return verifyInsert(result, log);
+}

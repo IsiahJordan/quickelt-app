@@ -22,3 +22,12 @@ export async function postLogin({ email, password }: AccountProps) {
   return res.data;
 }
 
+export async function postFetchAccount() {
+  const log = Log("postFetchAccount");
+  log.info("called");
+
+  const res = await api.post("/account/fetch", {}, { withCredentials: true });
+
+  return res.data;
+}
+

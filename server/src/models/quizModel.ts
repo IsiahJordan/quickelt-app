@@ -40,17 +40,17 @@ export async function selectAllQuiz({ page, limit }: QuizProps) {
   return verifySelect(result, log);
 }
 
-export async function insertQuiz({ name, imageUrl, metadata }: QuizProps) {
+export async function insertQuiz({ name, accountId, imageUrl, metadata }: QuizProps) {
   const log = Log("insertQuiz");
   log.info("model called");
 
   const result = await pool.query(
     `
       INSERT INTO quizzes
-      (name, image_url, metadata)
-      VALUES ($1, $2, $3)
+      (name, account_id, image_url, metadata)
+      VALUES ($1, $2, $3, $4)
       RETURNING *
-    `, [name, imageUrl, metadata]
+    `, [name, accountId, imageUrl, metadata]
   );
 
   return verifyInsert(result, log);
@@ -85,19 +85,16 @@ export async function selectAllTag() {
   return verifySelect(result, log);
 }
 
-export async function selectQuizAuthor({ accountId }: QuizProps) {
-  const log = Log("selectQuizAuthor");
+export async function selectAuthor({ accountId }: QuizProps) {
+  const log = Log("selectAuthor");
   log.info("model called");
 
   const result = await pool.query(
     `
-      SELECT * FROM quiz_author Q
-      INNER JOIN quizzes QZ
-      ON QZ.id = Q.quiz_id
-      WHERE Q.account_id=$1
+      SELECT * FROM quizzes
+      WHERE account_id=$1
     `, [accountId]
   );
 
   return verifySelect(result, log);
 }
-

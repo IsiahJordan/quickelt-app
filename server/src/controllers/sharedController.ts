@@ -1,5 +1,12 @@
 import Log from '../utility/log.ts'
-import { selectQuizTag, selectQuizTaken, selectTagQuiz, insertQuizTag, insertQuizTaken } from '../models/sharedModel.ts'
+import { 
+  selectQuizTag, 
+  selectQuizTaken, 
+  selectTagQuiz, 
+  insertQuizTag, 
+  insertQuizTaken,
+  insertQuizAuthor
+} from '../models/sharedModel.ts'
 import { verifyInsert, verifySelect } from './utils.module.ts'
 import { verifyToken } from "../utility/security.ts";
 
@@ -63,6 +70,21 @@ export async function createQuizTaken(req, res) {
   log.debug(decoded.id);
 
   const result = await insertQuizTaken({ quizId: quizId, accountId: decoded.id });
+
+  return verifyInsert(result, res);
+}
+
+export async function createQuizAuthor(req, res) {
+  const log = Log("createQuizAuthor");
+
+  const {quizId} = req.body;
+  log.debug(`${quizId}`);
+
+  const token = req.cookies.access_token;
+  const decoded = await verifyToken(token);
+  log.debug(decoded.id);
+
+  const result = await insertQuizAuthor({ quizId: quizId, accountId: decoded.id });
 
   return verifyInsert(result, res);
 }

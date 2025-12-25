@@ -1,6 +1,6 @@
 import { verifyInsert, verifySelect } from './utils.module.ts'
 import { insertAccount, selectAccount } from '../models/accountModel.ts'
-import { signToken } from '../utility/security.ts'
+import { signToken, verifyToken } from '../utility/security.ts'
 import Log from '../utility/log.ts'
 
 import bcrypt from 'bcrypt'
@@ -68,5 +68,22 @@ export async function login(req, res) {
   return res.status(200).json({
     success: true,
     message: "successful login"
+  });
+}
+
+export async function fetchAccount(req, res) {
+  const log = Log("login");
+
+  const token = req.cookies.access_token;
+  const decoded = await verifyToken(token);
+  log.debug(decoded.id);
+
+  // create authorization information to be used
+  const auth = {id: decoded.id, email: decoded.email, role: decoded.role};
+
+  return res.status(200).json({
+    success: true,
+    message: "successful decode",
+    data: auth
   });
 }

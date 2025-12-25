@@ -2,7 +2,14 @@ import express from 'express'
 
 const router = express.Router();
 
-import { fetchQuizTag, fetchQuizTaken, fetchTagQuiz, createQuizTag, createQuizTaken } from '../controllers/sharedController.ts'
+import { 
+  fetchQuizTag, 
+  fetchQuizTaken, 
+  fetchTagQuiz, 
+  createQuizTag, 
+  createQuizTaken,
+  createQuizAuthor
+} from '../controllers/sharedController.ts'
 import { requireBody, requireParams } from '../middleware/validation.ts'
 import { authToken, isAuthorize } from '../middleware/auth.ts'
 

@@ -1,9 +1,9 @@
 import { verifyInsert, verifySelect } from './utils.module.ts'
 import { 
   selectQuiz, 
-  selectQuizAuthor, 
   insertQuiz, 
   selectAllQuiz, 
+  selectAuthor,
   insertTag, 
   selectAllTag 
 } from '../models/quizModel.ts'
@@ -64,6 +64,19 @@ export async function fetchQuizAuthor(req, res) {
   return verifySelect(result, res);
 }
 
+export async function fetchAuthor(req, res) {
+  const log = Log("fetchAuthor");
+  log.info("info");
+
+  const token = req.cookies.access_token;
+  const decoded = await verifyToken(token);
+
+  const result = await selectAuthor({ accountId: decoded.id });
+  log.debug(JSON.stringify(result));
+
+  return verifySelect(result, res);
+}
+
 //
 // create quiz and tag
 //
@@ -87,7 +100,10 @@ export async function createQuiz(req, res) {
   const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
   log.debug(name);
 
-  const result = await insertQuiz({ name: name, imageUrl: imageUrl, metadata: metadata });
+  const token = req.cookies.access_token;
+  const decoded = await verifyToken(token);
+
+  const result = await insertQuiz({ name: name, accountId: decoded.id, imageUrl: imageUrl, metadata: metadata });
   log.debug(JSON.stringify(result))
   
   return verifyInsert(result, res);

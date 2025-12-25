@@ -114,3 +114,20 @@ export async function postCreateQuizAccount({ quizId }: QuizProps) {
   return data;
 }
 
+export async function postCreateQuiz({ name, metadata }: QuizProps) {
+  const log = Log("postCreateQuiz");
+  log.info("called");
+
+  const res = await api.post("/quiz/create", { name, metadata }, { 
+    withCredentials: true 
+  });
+
+  const data = res.data;
+
+  if (!data.success) {
+    throw Error(data.message);
+  }
+
+  return data;
+}
+

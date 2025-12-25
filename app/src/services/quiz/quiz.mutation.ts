@@ -1,5 +1,9 @@
 import Log from '@/utils/log'
-import { postCreateQuizAccount, postFetchQuizAccount } from './quiz.api.ts'
+import { 
+  postCreateQuizAccount, 
+  postFetchQuizAccount,
+  postCreateQuiz
+} from './quiz.api.ts'
 
 const log = Log("quiz.mutation");
 
@@ -16,3 +20,11 @@ export const postFetchQuizAccountOptions = (queryClient) => ({
     log.debug("successful fetch quiz account");
   }
 });
+
+export const postCreateQuizMutationOptions = (queryClient) => ({
+  mutationFn: postCreateQuiz,
+  onSuccess: (data) => {
+    log.debug("successful create quiz");
+  }
+});
+
