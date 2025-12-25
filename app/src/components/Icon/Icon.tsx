@@ -12,6 +12,7 @@ import { IoIosThumbsDown } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { LuMessageCircleMore } from "react-icons/lu";
 import { FiTarget } from "react-icons/fi";
+import { IoMdAddCircle } from "react-icons/io";
 
 import { useMediaQuery } from "react-responsive";
 
@@ -55,6 +56,8 @@ export default function Icon({ variant, color="text-default" }: IconProps) {
       return <CiHeart size={38} color={color}/>
     case "target":
       return <FiTarget size={18} color={color}/>
+    case "add":
+      return <IoMdAddCircle size={22} color={color}/>
   }
 
   // replace this with icon placeholder

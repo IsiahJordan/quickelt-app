@@ -6,7 +6,8 @@ import {
 } from '@/services/quiz/quiz.query.ts'
 import {
   postFetchQuizAccountOptions, 
-  postCreateQuizAccountOptions 
+  postCreateQuizAccountOptions,
+  postCreateQuizMutationOptions
 } from '@/services/quiz/quiz.mutation.ts'
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query'
 
@@ -59,3 +60,13 @@ export function useFetchQuizAccount() {
 
   return useMutation(postFetchQuizAccountOptions(queryClient));
 }
+
+export function useCreateQuiz() {
+  const log = Log("useCreateQuiz");
+  log.info("called");
+
+  const queryClient = useQueryClient();
+
+  return useMutation(postCreateQuizMutationOptions(queryClient));
+}
+
