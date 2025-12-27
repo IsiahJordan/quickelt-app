@@ -5,6 +5,7 @@ import SignPage from '@/pages/SignPage'
 import QuizPage from '@/pages/QuizPage'
 import QuestionPage from '@/pages/QuestionPage'
 import MyQuizPage from '@/pages/MyQuizPage'
+import QuizCreatePage from '@/pages/QuizCreatePage'
 
 import DarkLayout from '@/layouts/DarkLayout'
 import NavLayout from '@/layouts/NavLayout'
@@ -28,6 +29,7 @@ function App() {
         </Route>
         <Route element={<ProtectedLayout/>}>
           <Route path="/quiz/attempt/:id" element={<QuestionPage/>}/>
+          <Route path="/create/quiz/:id" element={<QuizCreatePage/>}>
         </Route>
       </Routes>
     </>
