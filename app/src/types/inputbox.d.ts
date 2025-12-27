@@ -9,5 +9,6 @@ export interface InputProps {
   placeholder: string;
   leftChild?: React.ReactNode;
   rightChild?: React.ReactNode;
+  style?: string;
   onChange: (text: string) => void;
 };

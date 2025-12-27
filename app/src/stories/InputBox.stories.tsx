@@ -9,7 +9,7 @@ type StoryProps = ComponentProps<typeof InputBox>;
 const meta: Meta<StoryProps> = { 
   component: InputBox, 
   title: 'InputBox', 
-  tags: ['autodocs'], 
+  tags: ['autodocs'],
   args: {
     leftChild: undefined,
     rightChild: undefined,
@@ -17,7 +17,9 @@ const meta: Meta<StoryProps> = {
   }
 } satisfies Meta<typeof InputBox>; 
 
-export default meta; type Story = StoryObj<StoryProps>; 
+export default meta; 
+
+type Story = StoryObj<StoryProps>; 
 
 export const Dark: Story = {
   args: {
@@ -37,3 +39,4 @@ export const Light: Story = {
     rightChild: <Icon variant="neye"/>
   }
 };
+

@@ -13,12 +13,13 @@ export default function InputBox({
   placeholder,
   leftChild,
   rightChild,
+  style,
   onChange
 } : InputProps) {
   const inputBase = "input font-default";
   const boxBase = "box font-default";
-  const inputClasses = inputBase + " " + variantInputClasses[variant] + " " + color;
-  const boxClasses = boxBase;
+  const inputClasses = inputBase + " " + variantInputClasses[variant] + " " + color + " " + style;
+  const boxClasses = boxBase + " ";
   
   return (
     <div className={inputClasses}>
