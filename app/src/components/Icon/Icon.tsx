@@ -13,6 +13,7 @@ import { CiHeart } from "react-icons/ci";
 import { LuMessageCircleMore } from "react-icons/lu";
 import { FiTarget } from "react-icons/fi";
 import { IoMdAddCircle } from "react-icons/io";
+import { BiImageAdd } from "react-icons/bi";
 
 import { useMediaQuery } from "react-responsive";
 
@@ -58,6 +59,8 @@ export default function Icon({ variant, color="text-default" }: IconProps) {
       return <FiTarget size={18} color={color}/>
     case "add":
       return <IoMdAddCircle size={22} color={color}/>
+    case "addimage":
+      return <BiImageAdd size={148} color={color}/>
   }
 
   // replace this with icon placeholder

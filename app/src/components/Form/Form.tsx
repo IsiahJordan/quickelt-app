@@ -22,7 +22,7 @@ export default function Form({
   setter,
   style
 }: FormProps) {
-  const base = "flex flex-col items-center w-full py-4 px-8";
+  const base = "flex flex-col items-center w-full";
   const classes = base + " " + variantClasses[variant] + " " + style;
   const log = Log("Form");
   const [inputArray, setInputArray] = useState<Array<string>>(Array(labels.length));
@@ -36,9 +36,10 @@ export default function Form({
           <InputBox
             variant={variant === "large" ? "dark" : "light"}
             type={types[index]}
+            color={variant === "large" ? "text-default" : "text-alt"}
             placeholder={item}
-            leftChild={leftIcons[index]}
-            rightChild={rightIcons[index]}
+            leftChild={leftIcons ? leftIcons[index]: undefined}
+            rightChild={rightIcons ? rightIcons[index]: undefined}
             onChange={(e) => {
               const array = inputArray;
               array[index] = e.target.value;
@@ -48,7 +49,7 @@ export default function Form({
           />
         </div>
       ))}
-      <div className="mt-10 w-full">
+      <div className="mt-2 w-full">
         {bottomChild}
       </div>
     </div>
