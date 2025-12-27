@@ -57,11 +57,11 @@ export default function SignUp({ variant }: MediaQueryProps) {
         </>
       )}
       bottomChild={(
-        <>
+        <div className="py-4">
           <Button
             variant="primary"
             label="SIGN UP"
-            style="mb-[9px]"
+            style="mb-4"
             onClick={handleSubmit}
           /> 
           <Button
@@ -72,12 +72,12 @@ export default function SignUp({ variant }: MediaQueryProps) {
               setQuery({form: "in"});
             }}
           /> 
-        </>
+        </div>
       )}
       leftIcons={[<Icon variant="mail"/>, <Icon variant="profile"/>, <Icon variant="lock"/>, <Icon variant="lock"/>]}
       rightIcons={[undefined, undefined, <Icon variant="neye"/>, <Icon variant="neye"/>]}
       setter={setInputArray}
-      style="flex-1"
+      style="flex-1 max-w-[528px] m-auto"
     />
   );
 }
