@@ -7,7 +7,7 @@ export default function InputArea({
   maxlength,
   onChange
 }: AreaProps) {
-  const base = "input-area px-3 py-2";
+  const base = "input-area px-3 py-2 bg-background-accent-alt";
   const classes = base + " " + style;
 
   return (
