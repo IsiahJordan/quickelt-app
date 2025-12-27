@@ -99,4 +99,10 @@
       h-[28vh]
       w-[10vw];
   }
+
+  .input-area {
+    @apply
+      border border-1 resize-none
+      rounded-sm max-sm:text-[16px];
+  }
 }
