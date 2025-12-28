@@ -20,3 +20,12 @@ export type QuizProps = {
 export type UploadProps = {
   imageUrl: string;
 };
+
+export type QuestionProps = {
+  id?: string;
+  quizId?: string;
+  description?: string;
+  options?: [string, string, string, string];
+  answer?: number;
+  imageUrl?: string;
+};

@@ -1,27 +1,7 @@
-import graphqlApi from '@/services/api.graphql'
-import Log from '@/utils/log'
+import { getQuestions } from './question.graphql.ts'
 
 export const getQuestionOptions = (quizId: string) => ({
   queryKey: ['questions', quizId],
-  queryFn: async () => {
-    const query = `
-      query($id: String!){
-        getQuestions(id: $id){
-          id
-          quizId
-          description
-          options
-          answer
-          imageUrl
-        }
-      } 
-    `;
-
-    const res = await graphqlApi.post("", {
-      query, 
-      variables: { id: quizId }
-    });
-    
-    return res.data.data.getQuestions;
-  }
+  queryFn: () => getQuestions({quizId: quizId}),
+  enabled: !!quizId
 });

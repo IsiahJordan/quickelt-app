@@ -17,7 +17,7 @@ export default function InputArea({
       cols={40*scale}
       onChange={onChange}
       placeholder={placeholder}
-      maxlength={maxlength}
+      maxLength={maxlength}
     >
     </textarea>
   ); 
