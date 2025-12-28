@@ -116,7 +116,7 @@ export default function MyQuizCreatePage({quizId}) {
                   variant="secondary"
                   label="View Question"
                   style="mb-[9px]"
-                  onClick={() => goTo(`/create/question/id=${quizId}`)}
+                  onClick={() => goTo(`/create/question/${quizId}`)}
                 /> 
               </>
             )}
