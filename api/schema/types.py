@@ -2,7 +2,7 @@ import strawberry
 from strawberry.scalars import JSON
 from datetime import datetime
 
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 @strawberry.input
 class QuestionInput:
@@ -10,7 +10,7 @@ class QuestionInput:
     description: str
     options: List[str]
     answer: int
-    imageUrl: str | None
+    imageUrl: Optional[str] = None
 
 @strawberry.type
 class Question:
@@ -19,7 +19,7 @@ class Question:
     description: str
     options: List[str]
     answer: int
-    imageUrl: str | None
+    imageUrl: Optional[str] = None
 
 @strawberry.input
 class AnswerInput:
